@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.mobile.moa.databinding.FragmentMileageBinding
 
+/* written by keh
+date: 22.05.30 */
+
 class MileageFragment : Fragment() {
 
     lateinit var binding: FragmentMileageBinding

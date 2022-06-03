@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.mobile.moa.databinding.FragmentAssetBinding
 
+/* written by keh
+date: 22.05.30 */
+
 class AssetFragment : Fragment() {
 
     lateinit var binding: FragmentAssetBinding

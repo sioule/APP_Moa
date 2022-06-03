@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.mobile.moa.databinding.FragmentHomeBinding
 
+/* written by keh
+date: 22.05.30 */
+
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
