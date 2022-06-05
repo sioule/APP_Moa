@@ -3,16 +3,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mileage.MileageShopFragment">
 
     <!--written by keh
-        date: 22.05.30-->
+        date: 22.06.05-->
 
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/mileage_shop_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="마일리지 사용처"
+        android:textStyle="normal"
+        android:textSize="14sp"
+        android:textColor="#2E2E2E"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/mileage_shop_tb"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="마일리지 사용처" />
+        android:layout_height="wrap_content"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="@color/black"
+        app:tabRippleColor="#00ff0000"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mileage_shop_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/mileage_shop_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mileage_shop_tb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
