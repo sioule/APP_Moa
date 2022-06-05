@@ -21,7 +21,7 @@
         app:showAsAction="always"
         android:title="가계부" />
     <item
-        android:id="@+id/mileageFragment"
+        android:id="@+id/mileageShopFragment"
         app:showAsAction="always"
         android:title="사용처" />
     <item

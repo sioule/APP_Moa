@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.mobile.moa.asset.AssetFragment
 import com.mobile.moa.databinding.ActivityMainBinding
 import com.mobile.moa.home.HomeFragment
-import com.mobile.moa.mileage.MileageFragment
+import com.mobile.moa.mileage.MileageShopFragment
 import com.mobile.moa.my.MyFragment
 import com.mobile.moa.pocket_book.PocketBookFragment
 
@@ -51,9 +51,9 @@ class MainActivity : AppCompatActivity() {
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
-                R.id.mileageFragment -> {
+                R.id.mileageShopFragment -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, MileageFragment())
+                        .replace(R.id.main_frm, MileageShopFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

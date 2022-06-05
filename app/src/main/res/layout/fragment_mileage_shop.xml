@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mileage.MileageFragment">
+    tools:context=".mileage.MileageShopFragment">
 
     <!--written by keh
         date: 22.05.30-->

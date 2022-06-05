@@ -10,7 +10,7 @@ import com.mobile.moa.databinding.FragmentMileageBinding
 /* written by keh
 date: 22.05.30 */
 
-class MileageFragment : Fragment() {
+class MileageShopFragment : Fragment() {
 
     lateinit var binding: FragmentMileageBinding
 
