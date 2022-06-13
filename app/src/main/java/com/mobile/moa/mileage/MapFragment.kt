@@ -27,7 +27,7 @@ import com.mobile.moa.mileage.PermissionUtils.isPermissionGranted
 
 
 /* written by keh
-date: 22.06.08 */
+date: 22.06.13 */
 
 class MapFragment : Fragment(),
     GoogleMap.OnMyLocationButtonClickListener,

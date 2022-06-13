@@ -7,7 +7,7 @@
     tools:context=".mileage.MapFragment">
 
     <!-- written by KEH
-        date : 22.06.08 -->
+        date : 22.06.13 -->
 
 <!--    <com.google.android.gms.maps.MapView-->
 <!--        android:id="@+id/shop_map"-->
@@ -22,15 +22,6 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
-<!--    <Button-->
-<!--        android:id="@+id/location_btn"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-
-<!--     android:name="com.google.android.gms.maps.MapFragment"-->
 
     <androidx.fragment.app.FragmentContainerView
         android:name="com.google.android.gms.maps.SupportMapFragment"

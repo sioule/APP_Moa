@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 
+/* written by keh
+date: 22.06.13 */
+
 /**
  * Utility class for access to runtime permissions.
  */
