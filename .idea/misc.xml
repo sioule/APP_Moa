@@ -3,17 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_asset.xml" value="0.1" />
-        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.4466666666666667" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_milage.xml" value="0.1" />
-        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_my.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_mileage.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_mileage_shop.xml" value="0.14666666666666667" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_my.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_pocket_book.xml" value="0.22" />
-        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_list.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
