@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_asset.xml" value="0.1" />
-        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.4466666666666667" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_milage.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_mileage.xml" value="0.1" />
@@ -13,6 +13,7 @@
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_my.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_pocket_book.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_list.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/item_home_mileage.xml" value="0.13125" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
       </map>
     </option>
