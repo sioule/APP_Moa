@@ -1,5 +1,6 @@
 package com.mobile.moa.mileage
 
+import com.mobile.moa.model.Shop
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -10,5 +11,5 @@ date: 22.06.24*/
 
 interface ShopRetrofitInterface {
     @GET("shops")
-    fun getShops(): Call<Shop>
+    fun getShops(): Call<ShopResponse>
 }
