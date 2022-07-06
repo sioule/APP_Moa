@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
     }
     
-//    상태바 투명 설정 > 지금 내비바도 투명임 수정 예정
+//    상태바 투명 설정 > 지금 nav바도 투명임 수정 예정
 //    fun Activity.setStatusBarTransparent() {
 //        window.apply {
 //            setFlags(
