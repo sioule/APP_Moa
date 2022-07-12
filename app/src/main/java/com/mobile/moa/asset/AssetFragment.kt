@@ -1,5 +1,6 @@
 package com.mobile.moa.asset
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,7 +21,13 @@ class AssetFragment : Fragment() {
     ): View? {
         binding = FragmentAssetBinding.inflate(inflater, container, false)
 
-        return binding.root
+        binding.tvManage.setOnClickListener {
+            activity?.let {
+                val intent = Intent(context, GoalActivity::class.java)
+                startActivity(intent)
+            }
+        }
+            return binding.root
+        }
     }
     
-}
