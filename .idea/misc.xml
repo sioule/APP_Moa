@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/drawable/shape.xml" value="0.166" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_asset.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.22" />
@@ -10,7 +11,7 @@
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_milage.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_mileage.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_mileage_shop.xml" value="0.3333333333333333" />
-        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_my.xml" value="0.22" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_my.xml" value="0.3333333333333333" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_pocket_book.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_list.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_list_item.xml" value="0.175" />
