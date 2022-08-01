@@ -1,5 +1,7 @@
 package com.mobile.moa.my
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -29,7 +31,11 @@ class MyFragment : Fragment(), AuthView {
         binding = FragmentMyBinding.inflate(inflater, container, false)
 
         binding.certificationBtn.setOnClickListener{
-            authCertification()
+            //authCertification()
+            var url ="https://testapi.openbanking.or.kr/oauth/2.0/authorize?response_type=code&client_id=6344979b-a78d-48c5-97b9-3b4051bdc315&redirect_uri=http://localhost:8080/authResult&scope=login inquiry transfer&state=12345678123456781234567812345678&auth_type=0";
+            val openURL = Intent(android.content.Intent.ACTION_VIEW)
+            openURL.data = Uri.parse(url)
+            startActivity(openURL)
         }
 
         return binding.root
@@ -45,12 +51,12 @@ class MyFragment : Fragment(), AuthView {
     }
 
     override fun onAuthCertificationSuccess(authResponse: String) {
-        val myWebView: WebView = binding.webview
-        myWebView.settings.javaScriptEnabled
+//        val myWebView: WebView = binding.webview
+//        myWebView.settings.javaScriptEnabled
         //myWebView.loadData(authResponse, "text/html; charset=utf-8", "UTF-8")
 
-        myWebView.loadUrl("https://twww.openbanking.or.kr/apt/mobileweb/authorizeNewGW?sessionID=ff837135-d287-46a3-8fdf-5bc5c0243ce2&action=Grant&api_tran_id=a197d782-23e2-4b3d-9fd1-f6c80f1664ac&gw_svc_id=faf66bd6cafdf009a37caaac77ba5194&gw_app_key=6344979b-a78d-48c5-97b9-3b4051bdc315&response_type=code&client_id=6344979b-a78d-48c5-97b9-3b4051bdc315&client_info=&redirect_uri=http://localhost:8080/authResult&scope=login+inquiry+transfer&auth_type=0&lang=kor&state=12345678123456781234567812345678")
-        Log.d("auth-url", authResponse)
+//        myWebView.loadUrl("https://twww.openbanking.or.kr/apt/mobileweb/authorizeNewGW?sessionID=ff837135-d287-46a3-8fdf-5bc5c0243ce2&action=Grant&api_tran_id=a197d782-23e2-4b3d-9fd1-f6c80f1664ac&gw_svc_id=faf66bd6cafdf009a37caaac77ba5194&gw_app_key=6344979b-a78d-48c5-97b9-3b4051bdc315&response_type=code&client_id=6344979b-a78d-48c5-97b9-3b4051bdc315&client_info=&redirect_uri=http://localhost:8080/authResult&scope=login+inquiry+transfer&auth_type=0&lang=kor&state=12345678123456781234567812345678")
+//        Log.d("auth-url", authResponse)
     }
 
     override fun onAuthCertificationFailure() {
