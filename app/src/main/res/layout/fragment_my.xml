@@ -70,6 +70,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_school_btn"/>
 
+    <Button
+        android:id="@+id/my_goal_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="25dp"
+        android:text="나의 목표 관리"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_scrap_btn"/>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -80,6 +94,7 @@
         android:layout_marginBottom="30dp">
 
         <TextView
+            android:id="@+id/logout_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="로그아웃"
@@ -90,6 +105,7 @@
             android:padding="10dp"/>
 
         <TextView
+            android:id="@+id/withdraw_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원탈퇴"

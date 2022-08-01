@@ -46,8 +46,32 @@ class MyFragment : Fragment(), AuthView {
 
 //        }
 
+        binding.mySchoolBtn.setOnClickListener{
+            schoolEdit()
+        }
+
+        binding.myScrapBtn.setOnClickListener{
+            scrapList()
+        }
+
+        binding.myGoalBtn.setOnClickListener{
+            //goal fragment or activity 연결
+        }
+
+        //setOnClickListener() {} 차이 공부
+        binding.logoutTv.setOnClickListener{}
+        binding.withdrawTv.setOnClickListener{}
+
         return binding.root
     }
+
+    //학교 등록
+    private fun schoolEdit() {
+
+    }
+
+    //마일리지 사용처 스크랩 리스트
+    private fun scrapList() {}
 
     private fun authCertification() {
         val authService = AuthService()
