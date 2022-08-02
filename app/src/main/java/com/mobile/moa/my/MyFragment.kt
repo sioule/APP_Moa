@@ -33,42 +33,48 @@ class MyFragment : Fragment(), MyView {
         binding = FragmentMyBinding.inflate(inflater, container, false)
 
         myService.setMyView(this)
+
+        //사용자 정보 가져오기
         myService.getMyPage(1) //memberId 변경
 
-
+        //학교 등록하기
         binding.mySchoolBtn.setOnClickListener{
-            schoolEdit()
+            myService.putSchool(1) //memberId 변경
         }
 
+        //스크랩 리스트 보기
         binding.myScrapBtn.setOnClickListener{
-            scrapList()
+            myService.updateMyPage(1) //memberId 변경
         }
 
+        //목표 관리 페이지
         binding.myGoalBtn.setOnClickListener{
             //goal fragment or activity 연결
         }
 
-        //setOnClickListener() {} 차이 공부
+        //로그아웃
         binding.logoutTv.setOnClickListener{
 
         }
-        binding.withdrawTv.setOnClickListener{
 
+        //회원탈퇴
+        binding.withdrawTv.setOnClickListener{
+            myService.deleteMy(1) //memberId 변경
         }
 
         return binding.root
     }
 
-    //학교 등록
-    private fun schoolEdit() {
-
-    }
-
-    //마일리지 사용처 스크랩 리스트
-    private fun scrapList() {}
-
 
     override fun onGetMySuccess(myResponse: MyResponse) {
+        binding.myNicknameTv.text = myResponse.nickname
+    }
+
+    override fun onPutSchoolSuccess(myResponse: MyResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateMySuccess(myResponse: MyResponse) {
         binding.myNicknameTv.text = myResponse.nickname
     }
 
