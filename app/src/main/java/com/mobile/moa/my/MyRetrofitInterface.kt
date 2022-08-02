@@ -7,7 +7,9 @@ import retrofit2.http.*
 interface MyRetrofitInterface {
 
     @POST("/signUp")
-//    fun signUp(@Body(""))
+    fun signUp(
+        @Body user:RequestSignUp
+    ) : retrofit2.Call<MyResponse>
 
     @GET("/myPage/{id}")
     fun getMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>

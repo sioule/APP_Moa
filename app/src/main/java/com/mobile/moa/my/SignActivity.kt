@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
-import com.mobile.moa.databinding.ActivityMainBinding
 import com.mobile.moa.databinding.ActivitySignBinding
 
 //시작으로 바꾸기
-class SignActivity : AppCompatActivity() {
+class SignActivity : AppCompatActivity(), SignUpView {
 
     lateinit var binding: ActivitySignBinding
+    lateinit var requestSignUp: RequestSignUp
+    lateinit var myService: MyService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,18 @@ class SignActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setStatusBarTransparent()
+
+        binding.signUpBtn.setOnClickListener {
+            signUp()
+        }
+    }
+
+    private fun signUp() {
+        requestSignUp.nickname = binding.nicknameEt.text.toString()
+        requestSignUp.email = binding.emailEt.text.toString()
+        requestSignUp.password = binding.passwordEt.text.toString()
+
+        myService.signUp(requestSignUp)
     }
 
     private fun setStatusBarTransparent() {
@@ -31,5 +44,9 @@ class SignActivity : AppCompatActivity() {
         if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
             WindowCompat.setDecorFitsSystemWindows(window, false)
         }
+    }
+
+    override fun onSignUpSuccess(myResponse: MyResponse) {
+
     }
 }

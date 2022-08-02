@@ -8,9 +8,33 @@ import retrofit2.Response
 
 class MyService {
     private lateinit var myView: MyView
+    private lateinit var signUpView: SignUpView
 
     fun setMyView(myView: MyView) {
         this.myView = myView
+    }
+
+    fun setSignUpView(signUpView: SignUpView) {
+        this.signUpView = signUpView
+    }
+
+    fun signUp(requestSignUp: RequestSignUp) {
+        val signUpService = getRetrofit().create(MyRetrofitInterface::class.java)
+
+        signUpService.signUp(requestSignUp).enqueue(object : retrofit2.Callback<MyResponse>{
+            override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
+                if (response.isSuccessful) {
+                    val my = response.body()!!
+                    signUpView.onSignUpSuccess(my)
+                    Log.d("my-retrofit", my.id.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<MyResponse>, t: Throwable) {
+                Log.d("my-retrofit-fail", t.toString())
+            }
+
+        })
     }
 
     fun getMyPage(memberId: Long) {
@@ -33,9 +57,9 @@ class MyService {
     }
 
     fun updateMyPage(memberId: Long) {
-        val getMyService = getRetrofit().create(MyRetrofitInterface::class.java)
+        val updateMyService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        getMyService.updateMyPage(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
+        updateMyService.updateMyPage(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 if (response.isSuccessful) {
                     val my = response.body()!!
@@ -52,9 +76,9 @@ class MyService {
     }
 
     fun putSchool(memberId: Long) {
-        val getMyService = getRetrofit().create(MyRetrofitInterface::class.java)
+        val putSchoolService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        getMyService.putSchool(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
+        putSchoolService.putSchool(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 if (response.isSuccessful) {
                     val my = response.body()!!
@@ -71,9 +95,9 @@ class MyService {
     }
 
     fun deleteMy(memberId: Long) {
-        val getMyService = getRetrofit().create(MyRetrofitInterface::class.java)
+        val deleteMyService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        getMyService.deleteMy(memberId).enqueue(object : retrofit2.Callback<ResponseBody>{
+        deleteMyService.deleteMy(memberId).enqueue(object : retrofit2.Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 Log.d("my-retrofit", response.toString())
             }
