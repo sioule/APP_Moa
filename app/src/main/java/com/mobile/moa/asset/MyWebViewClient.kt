@@ -1,4 +1,6 @@
 package com.mobile.moa.asset
 
-class MyWebViewClient {
+import android.webkit.WebViewClient
+
+class MyWebViewClient : WebViewClient() {
 }
