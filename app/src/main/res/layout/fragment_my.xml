@@ -100,8 +100,6 @@
             android:text="로그아웃"
             android:textSize="12sp"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:padding="10dp"/>
 
         <TextView
@@ -111,8 +109,6 @@
             android:text="회원탈퇴"
             android:textSize="12sp"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:padding="10dp"/>
 
     </LinearLayout>
