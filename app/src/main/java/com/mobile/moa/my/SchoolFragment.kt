@@ -9,6 +9,9 @@ import com.mobile.moa.R
 import com.mobile.moa.databinding.FragmentMyBinding
 import com.mobile.moa.databinding.FragmentSchoolBinding
 
+/* written by keh
+date: 22.08.02 */
+
 class SchoolFragment : Fragment() {
 
 //    override fun onCreate(savedInstanceState: Bundle?) {

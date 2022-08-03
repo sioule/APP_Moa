@@ -4,6 +4,9 @@ import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.http.*
 
+/* written by keh
+date: 22.08.01 */
+
 interface MyRetrofitInterface {
 
     @POST("/signUp")

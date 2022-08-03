@@ -2,6 +2,9 @@ package com.mobile.moa.my
 
 import com.google.gson.annotations.SerializedName
 
+/* written by keh
+date: 22.08.01 */
+
 data class MyResponse (
     @SerializedName("id") val id: Long,
     @SerializedName("nickname") val nickname: String,
