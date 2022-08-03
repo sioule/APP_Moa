@@ -21,6 +21,8 @@ class SignActivity : AppCompatActivity(), SignUpView {
 
         setStatusBarTransparent()
 
+        myService.setSignUpView(this)
+
         binding.signUpBtn.setOnClickListener {
             signUp()
         }
