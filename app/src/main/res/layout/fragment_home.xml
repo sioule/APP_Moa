@@ -1,17 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomeFragment">
+    tools:context=".home.HomeFragment"
+    android:fitsSystemWindows="true">
 
-    <!--written by keh
-        date: 22.05.30-->
+    <!--edited by keh
+        date: 22.07.04-->
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="메인" />
+        android:id="@+id/home_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="MoA"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#f8da00"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/home_nickname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_logo"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="회원 닉네임"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="님의 총 자산"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/home_nickname_tv"
+         app:layout_constraintBottom_toBottomOf="@id/home_nickname_tv"/>
+
+    <TextView
+        android:id="@+id/home_asset_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/home_nickname_tv"
+        app:layout_constraintTop_toBottomOf="@+id/home_nickname_tv"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="000,000"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/home_asset_tv"
+        app:layout_constraintTop_toBottomOf="@+id/home_nickname_tv"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="원"
+        android:layout_marginTop="5dp"/>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/rectangle_home"
+        app:layout_constraintStart_toStartOf="@id/home_asset_tv"
+        app:layout_constraintTop_toTopOf="@id/home_asset_tv"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/home_shop_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_asset_tv"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="25dp"
+        android:textSize="14sp"
+        android:text="마일리지 사용처 추천"
+        android:textColor="@color/black"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_mileage_rv"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_shop_tv"
+        tools:listitem="@layout/item_home_shop" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

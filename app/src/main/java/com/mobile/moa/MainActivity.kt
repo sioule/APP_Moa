@@ -1,7 +1,11 @@
 package com.mobile.moa
 
+import android.app.Activity
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
+import androidx.core.view.WindowCompat
 import com.mobile.moa.asset.AssetFragment
 import com.mobile.moa.databinding.ActivityMainBinding
 import com.mobile.moa.home.HomeFragment
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBottomNavigation()
+        setStatusBarTransparent()
     }
 
     private fun initBottomNavigation(){
@@ -65,6 +70,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             false
+        }
+    }
+
+    fun setStatusBarTransparent() {
+        window.apply {
+            setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+        }
+        if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
+            WindowCompat.setDecorFitsSystemWindows(window, false)
         }
     }
 }
