@@ -1,13 +1,14 @@
 package com.mobile.moa.my
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
 import com.mobile.moa.databinding.ActivitySignBinding
 
-//시작으로 바꾸기
 class SignActivity : AppCompatActivity(), SignUpView {
 
     lateinit var binding: ActivitySignBinding
@@ -49,6 +50,11 @@ class SignActivity : AppCompatActivity(), SignUpView {
     }
 
     override fun onSignUpSuccess(myResponse: MyResponse) {
-
+        Log.d("user-nickname", myResponse.nickname)
+        //로그인 페이지로 이동
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        startActivity(intent)
+        finish()
     }
 }
