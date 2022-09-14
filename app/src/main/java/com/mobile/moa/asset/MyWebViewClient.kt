@@ -5,12 +5,23 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.mobile.moa.auth.AuthResponse
+import com.mobile.moa.auth.AuthRetrofitInterface
 import com.mobile.moa.auth.AuthService
 import com.mobile.moa.auth.AuthView
+import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.*
 
-class MyWebViewClient : WebViewClient(), AuthView{
+class MyWebViewClient : WebViewClient(){
 
 //    "code": "2ffd133a-d17a-431d-a6a5",
 //  "scope": "login inquiry transfer",
@@ -33,7 +44,7 @@ class MyWebViewClient : WebViewClient(), AuthView{
         view: WebView?,
         request: WebResourceRequest?
     ): WebResourceResponse? {
-        Log.d("request-intercept", request?.url?.query.toString())
+//        Log.d("request-intercept", request?.url?.query.toString())
         return super.shouldInterceptRequest(view, request)
     }
 
@@ -58,8 +69,8 @@ class MyWebViewClient : WebViewClient(), AuthView{
 //  redirect_uri : http://localhost:8080/authResult
 //  grant_type : authorization_code code.toByteArray()
 
-                authService?.setCertificationView(this)
-                authService?.authCertification(c)
+//                authService?.setCertificationView(this)
+                authCertification(c)
 
 //                view!!.postUrl("https://testapi.openbanking.or.kr/oauth/2.0/token", body.toByteArray())
                 return true
@@ -69,16 +80,58 @@ class MyWebViewClient : WebViewClient(), AuthView{
         return super.shouldOverrideUrlLoading(view, request)
     }
 
-    override fun onAuthCertificationSuccess(authResponse: AuthResponse) {
-        Log.d("access_token_fragment", authResponse.access_token)
+    fun onAuthCertificationSuccess(authResponse: String) {
+        Log.d("access_token_fragment", authResponse)
     }
 
-    override fun onAuthCertificationFailure() {
-
+    fun onAuthCertificationFailure() {
         Log.d("access_token_fragment", "fail")
     }
 
 
+    private fun authCertification(code: String) {
+        val interceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+
+        val gson: Gson = GsonBuilder().setLenient().create()
+
+        // baseUrl 안쓰는 부분이라 직접 빌드
+        val authService = Retrofit.Builder()
+            .baseUrl("https://testapi.openbanking.or.kr/oauth/2.0/")
+            .client(client)
+//            .addConverterFactory(GsonConverterFactory.create(gson)).build()
+            .addConverterFactory(ScalarsConverterFactory.create()).build()
+            .create(AuthRetrofitInterface::class.java)
+
+//
+        //  code : key 발급 단계에서 받은 authorization_code
+//  client_id : 6344979b-a78d-48c5-97b9-3b4051bdc315
+//  client_secret : 101c7763-e2aa-4ef4-b5b9-d83cf009f50b
+//  redirect_uri : http://localhost:8080/authResult
+//  grant_type : authorization_code
+        authService.token(code, "6344979b-a78d-48c5-97b9-3b4051bdc315", "101c7763-e2aa-4ef4-b5b9-d83cf009f50b",
+            "http://localhost:8080/authResult", "authorization_code")
+            .enqueue(object : Callback<ResponseBody> {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    if (response.isSuccessful) {
+                        val authResponse = response.body().toString()!!
+
+                        onAuthCertificationSuccess(authResponse)
+                        Log.d("auth-certification", authResponse)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    onAuthCertificationFailure()
+                    Log.d("auth-certif-error", t.toString())
+                }
+            })
+    }
 
 
 

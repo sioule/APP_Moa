@@ -33,13 +33,13 @@ interface AuthRetrofitInterface {
 //}
 
     @FormUrlEncoded
-    @POST()
+    @POST("token")
     fun token(
         @Field("code") code: String,
         @Field("client_id") client_id: String,
         @Field("client_secret") client_secret: String,
         @Field("redirect_uri") redirect_uri: String,
         @Field("grant_type") grant_type: String
-    ): Call<AuthResponse>
-//    ): Call<ResponseBody>
+//    ): Call<AuthResponse>
+    ): Call<ResponseBody>
 }
