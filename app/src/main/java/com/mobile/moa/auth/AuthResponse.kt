@@ -15,8 +15,8 @@ data class AuthResponse (
 
     @SerializedName("access_token") val access_token: String,
     @SerializedName("token_type") val token_type: String,
-    @SerializedName("expires_in") val expires_in: String,
     @SerializedName("refresh_token") val refresh_token: String,
+    @SerializedName("expires_in") val expires_in: Int,
     @SerializedName("scope") val scope: String,
     @SerializedName("user_seq_no") val user_seq_no: String
 )

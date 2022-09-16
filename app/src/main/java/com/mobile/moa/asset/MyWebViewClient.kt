@@ -18,6 +18,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.*
 
@@ -80,8 +81,8 @@ class MyWebViewClient : WebViewClient(){
         return super.shouldOverrideUrlLoading(view, request)
     }
 
-    fun onAuthCertificationSuccess(authResponse: String) {
-        Log.d("access_token_fragment", authResponse)
+    fun onAuthCertificationSuccess(authResponse: AuthResponse) {
+        Log.d("access_token_fragment", authResponse.access_token)
     }
 
     fun onAuthCertificationFailure() {
@@ -104,8 +105,8 @@ class MyWebViewClient : WebViewClient(){
         val authService = Retrofit.Builder()
             .baseUrl("https://testapi.openbanking.or.kr/oauth/2.0/")
             .client(client)
-//            .addConverterFactory(GsonConverterFactory.create(gson)).build()
-            .addConverterFactory(ScalarsConverterFactory.create()).build()
+            .addConverterFactory(GsonConverterFactory.create(gson)).build()
+//            .addConverterFactory(ScalarsConverterFactory.create()).build()
             .create(AuthRetrofitInterface::class.java)
 
 //
@@ -116,17 +117,17 @@ class MyWebViewClient : WebViewClient(){
 //  grant_type : authorization_code
         authService.token(code, "6344979b-a78d-48c5-97b9-3b4051bdc315", "101c7763-e2aa-4ef4-b5b9-d83cf009f50b",
             "http://localhost:8080/authResult", "authorization_code")
-            .enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+            .enqueue(object : Callback<AuthResponse> {
+                override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
                     if (response.isSuccessful) {
-                        val authResponse = response.body().toString()!!
+                        val authResponse = response.body()!!
 
                         onAuthCertificationSuccess(authResponse)
-                        Log.d("auth-certification", authResponse)
+                        Log.d("auth-certification", authResponse.access_token)
                     }
                 }
 
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
                     onAuthCertificationFailure()
                     Log.d("auth-certif-error", t.toString())
                 }
