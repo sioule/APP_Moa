@@ -1,14 +1,22 @@
 package com.mobile.moa.my
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
+import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
+import com.mobile.moa.auth.AuthResponse
+import com.mobile.moa.auth.AuthService
+import com.mobile.moa.auth.AuthView
 import com.mobile.moa.databinding.FragmentMyBinding
 import okhttp3.ResponseBody
+import kotlin.math.log
 
 /* written by keh
 date: 22.05.30
@@ -28,16 +36,16 @@ class MyFragment : Fragment(), MyView {
         myService.setMyView(this)
 
         //사용자 정보 가져오기
-        myService.getMyPage(1) //memberId 변경
+        myService.getMyPage(getJwt())
 
         //학교 등록하기
         binding.mySchoolBtn.setOnClickListener{
-            myService.putSchool(1) //memberId 변경
+            myService.putSchool(getJwt())
         }
 
         //스크랩 리스트 보기
         binding.myScrapBtn.setOnClickListener{
-            myService.updateMyPage(1) //memberId 변경
+            myService.updateMyPage(getJwt())
         }
 
         //목표 관리 페이지
@@ -52,10 +60,15 @@ class MyFragment : Fragment(), MyView {
 
         //회원탈퇴
         binding.withdrawTv.setOnClickListener{
-            myService.deleteMy(1) //memberId 변경
+            myService.deleteMy(getJwt())
         }
 
         return binding.root
+    }
+
+    private fun getJwt(): Long {
+        val memberId = this.activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return memberId!!.getLong("jwt", 0)
     }
 
 
