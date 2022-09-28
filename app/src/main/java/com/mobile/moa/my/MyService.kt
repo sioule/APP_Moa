@@ -6,6 +6,10 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 
+/* written by keh
+date: 22.07.31
+edit: 22.08.02 */
+
 class MyService {
     private lateinit var myView: MyView
     private lateinit var signUpView: SignUpView

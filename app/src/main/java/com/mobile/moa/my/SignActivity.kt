@@ -9,6 +9,11 @@ import android.view.WindowManager
 import androidx.core.view.WindowCompat
 import com.mobile.moa.databinding.ActivitySignBinding
 
+/* written by keh
+date: 22.07.31
+edit: 22.08.02 */
+
+//추후 시작 화면으로 바꾸기
 class SignActivity : AppCompatActivity(), SignUpView {
 
     lateinit var binding: ActivitySignBinding

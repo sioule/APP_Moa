@@ -9,6 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.HttpsURLConnection
 
+/* written by keh
+date: 22.07.31 */
 
 const val BASE_URL = "https://" //추후 수정
 

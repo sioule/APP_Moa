@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mobile.moa.databinding.FragmentAssetListBinding
 import com.mobile.moa.databinding.FragmentPocketBookBinding
 
 /* written by keh
@@ -20,7 +21,9 @@ class PocketBookFragment : Fragment() {
     ): View? {
         binding = FragmentPocketBookBinding.inflate(inflater, container, false)
 
+
+
         return binding.root
     }
-    
+
 }
