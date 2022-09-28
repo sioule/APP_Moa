@@ -9,6 +9,7 @@ import retrofit2.Response
 class MyService {
     private lateinit var myView: MyView
     private lateinit var signUpView: SignUpView
+    private lateinit var schoolView: SchoolView
 
     fun setMyView(myView: MyView) {
         this.myView = myView
@@ -16,6 +17,10 @@ class MyService {
 
     fun setSignUpView(signUpView: SignUpView) {
         this.signUpView = signUpView
+    }
+
+    fun setSchoolView(schoolView: SchoolView) {
+        this.schoolView = schoolView
     }
 
     fun signUp(requestSignUp: RequestSignUp) {
@@ -75,10 +80,10 @@ class MyService {
         })
     }
 
-    fun putSchool(memberId: Long) {
+    fun putSchool(memberId: Long, school: RequestSchool) {
         val putSchoolService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        putSchoolService.putSchool(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
+        putSchoolService.putSchool(memberId, school).enqueue(object : retrofit2.Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 if (response.isSuccessful) {
                     val my = response.body()!!

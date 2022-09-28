@@ -40,7 +40,11 @@ class MyFragment : Fragment(), MyView {
 
         //학교 등록하기
         binding.mySchoolBtn.setOnClickListener{
-            myService.putSchool(getJwt())
+//            myService.putSchool(getJwt(), school)
+            val intent = Intent(activity, SchoolFragment::class.java)
+            activity?.startActivity(intent)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
 
         //스크랩 리스트 보기

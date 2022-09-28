@@ -8,14 +8,18 @@ interface MyRetrofitInterface {
 
     @POST("/signUp")
     fun signUp(
-        @Body user:RequestSignUp
+        @Body user: RequestSignUp
     ) : retrofit2.Call<MyResponse>
 
     @GET("/myPage/{id}")
     fun getMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>
 
+
     @PUT("/myPage/school/{id}")
-    fun putSchool(@Path("id") id: Long) : retrofit2.Call<MyResponse>
+    fun putSchool(
+        @Path("id") id: Long,
+        @Body requestSchool: RequestSchool
+    ) : retrofit2.Call<MyResponse>
 
     @PUT("/myPage/update/{id}")
     fun updateMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>

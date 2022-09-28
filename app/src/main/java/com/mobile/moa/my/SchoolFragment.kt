@@ -9,7 +9,7 @@ import com.mobile.moa.R
 import com.mobile.moa.databinding.FragmentMyBinding
 import com.mobile.moa.databinding.FragmentSchoolBinding
 
-class SchoolFragment : Fragment() {
+class SchoolFragment : Fragment(), SchoolView {
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -25,6 +25,7 @@ class SchoolFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSchoolBinding.inflate(inflater, container, false)
+        myService.setSchoolView(this)
 
         binding.schoolSearchBtn.setOnClickListener {
             searchSchool(binding.schoolEt.text.toString())
