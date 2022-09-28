@@ -5,6 +5,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.mobile.moa.auth.AuthResponse
@@ -24,12 +25,12 @@ import java.util.*
 
 class MyWebViewClient : WebViewClient(){
 
-//    "code": "2ffd133a-d17a-431d-a6a5",
-//  "scope": "login inquiry transfer",
-//  "client_info": "test",
-//  "state": "b80BLsfigm9OokPTjy03elbJqRHOfGSY"
 
-    private var authService: AuthService? = null
+    private lateinit var authView: AuthView
+
+    fun setCertificationView(authView: AuthView) {
+        this.authView = authView
+    }
 
 
     override fun onLoadResource(view: WebView?, url: String?) {
@@ -64,11 +65,6 @@ class MyWebViewClient : WebViewClient(){
                         "&redirect_uri=http://localhost:8080/authResult&grant_type=authorization_code"
                 val c = code.split("=")[1]
                 Log.d("body", c)
-//                code : key 발급 단계에서 받은 authorization_code
-//  client_id : 6344979b-a78d-48c5-97b9-3b4051bdc315
-//  client_secret : 101c7763-e2aa-4ef4-b5b9-d83cf009f50b
-//  redirect_uri : http://localhost:8080/authResult
-//  grant_type : authorization_code code.toByteArray()
 
 //                authService?.setCertificationView(this)
                 authCertification(c)
@@ -81,13 +77,19 @@ class MyWebViewClient : WebViewClient(){
         return super.shouldOverrideUrlLoading(view, request)
     }
 
-    fun onAuthCertificationSuccess(authResponse: AuthResponse) {
-        Log.d("access_token_fragment", authResponse.access_token)
-    }
+//    fun onAuthCertificationSuccess(authResponse: AuthResponse) {
+//        Log.d("access_token_fragment", authResponse.access_token)
 
-    fun onAuthCertificationFailure() {
-        Log.d("access_token_fragment", "fail")
-    }
+//        val spf =  getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+//        val editor = spf.edit()
+
+//        editor.putString("access_token", authResponse.access_token)
+//        editor.apply()
+//        }
+
+//    fun onAuthCertificationFailure() {
+//        Log.d("access_token_fragment", "fail")
+//    }
 
 
     private fun authCertification(code: String) {
@@ -109,12 +111,7 @@ class MyWebViewClient : WebViewClient(){
 //            .addConverterFactory(ScalarsConverterFactory.create()).build()
             .create(AuthRetrofitInterface::class.java)
 
-//
-        //  code : key 발급 단계에서 받은 authorization_code
-//  client_id : 6344979b-a78d-48c5-97b9-3b4051bdc315
-//  client_secret : 101c7763-e2aa-4ef4-b5b9-d83cf009f50b
-//  redirect_uri : http://localhost:8080/authResult
-//  grant_type : authorization_code
+
         authService.token(code, "6344979b-a78d-48c5-97b9-3b4051bdc315", "101c7763-e2aa-4ef4-b5b9-d83cf009f50b",
             "http://localhost:8080/authResult", "authorization_code")
             .enqueue(object : Callback<AuthResponse> {
@@ -122,13 +119,13 @@ class MyWebViewClient : WebViewClient(){
                     if (response.isSuccessful) {
                         val authResponse = response.body()!!
 
-                        onAuthCertificationSuccess(authResponse)
+                        authView.onAuthCertificationSuccess(authResponse)
                         Log.d("auth-certification", authResponse.access_token)
                     }
                 }
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                    onAuthCertificationFailure()
+                    authView.onAuthCertificationFailure()
                     Log.d("auth-certif-error", t.toString())
                 }
             })

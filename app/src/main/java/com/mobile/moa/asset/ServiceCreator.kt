@@ -1,5 +1,6 @@
 package com.mobile.moa.asset
 
+import com.mobile.moa.auth.AuthResponse
 import okhttp3.Interceptor
 import okhttp3.Response
 import retrofit2.Retrofit
@@ -21,12 +22,12 @@ object ServiceCreator {
 
     // HEADER에 access token 넣기
     class AppInterceptor : Interceptor {
-        var access_token = ""
-        var authorization = "Bearer " + access_token
+//        var access_token =
+//        var authorization = "Bearer " + access_token
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain) : Response = with(chain) {
             val newRequest = request().newBuilder()
-                .addHeader("Authorization", authorization)
+//                .addHeader("Authorization", authorization)
                 .build()
             proceed(newRequest)
         }
