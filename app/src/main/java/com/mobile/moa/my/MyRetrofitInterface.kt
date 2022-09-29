@@ -17,6 +17,16 @@ interface MyRetrofitInterface {
     @GET("/myPage/{id}")
     fun getMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>
 
+//    ?input=Museum%20of%20Contemporary%20Art%20Australia
+    //    &inputtype=textquery
+    //    &fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=YOUR_API_KEY")
+//
+    @GET()
+    fun searchSchool(
+        @Query("input") input: String,
+        @Query("inputtype") type: String
+    ) : retrofit2.Call<SchoolResponse>
+
 
     @PUT("/myPage/school/{id}")
     fun putSchool(

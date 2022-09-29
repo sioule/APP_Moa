@@ -11,11 +11,6 @@ import com.mobile.moa.databinding.FragmentSchoolBinding
 
 class SchoolFragment : Fragment(), SchoolView {
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//        }
-//    }
 
     lateinit var binding: FragmentSchoolBinding
     lateinit var myService: MyService
@@ -34,8 +29,10 @@ class SchoolFragment : Fragment(), SchoolView {
         return binding.root
     }
 
+    //지도에서 검색 후 학교 위치, 이름 가져오기
     private fun searchSchool(school: String) {
-
+        myService.searchSchool(school)
+//        myService.putSchool(school)
     }
 
 }
