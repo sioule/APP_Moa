@@ -36,7 +36,7 @@ data class Candidates(
     @SerializedName("geometry") val geometry: Geometry,
     @SerializedName("name") val name: String,
     @SerializedName("opening_hours") val opening_hours: Opening,
-    @SerializedName("rating") val rating: Int
+    @SerializedName("rating") val rating: Number
 )
 
 data class Geometry(
@@ -44,8 +44,8 @@ data class Geometry(
 )
 
 data class Location(
-    @SerializedName("lat") val lat: Long,
-    @SerializedName("lng") val lng: Long
+    @SerializedName("lat") val lat: Number,
+    @SerializedName("lng") val lng: Number
 )
 
 data class Opening(

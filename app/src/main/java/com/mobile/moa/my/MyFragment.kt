@@ -25,7 +25,7 @@ edit : 22.08.02 */
 class MyFragment : Fragment(), MyView {
 
     lateinit var binding: FragmentMyBinding
-    lateinit var myService: MyService
+    private var myService = MyService()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +41,7 @@ class MyFragment : Fragment(), MyView {
         //학교 등록하기
         binding.mySchoolBtn.setOnClickListener{
 //            myService.putSchool(getJwt(), school)
-            val intent = Intent(activity, SchoolFragment::class.java)
+            val intent = Intent(activity, SchoolActivity::class.java)
             activity?.startActivity(intent)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)

@@ -49,7 +49,7 @@ class MyService {
             }
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                Log.d("my-retrofit-fail", t.toString())
+                Log.d("my-retrofit-sign-fail", t.toString())
             }
 
         })
@@ -68,7 +68,7 @@ class MyService {
             }
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                Log.d("my-retrofit-fail", t.toString())
+                Log.d("my-retrofit-get-fail", t.toString())
             }
 
         })
@@ -87,7 +87,7 @@ class MyService {
             }
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                Log.d("my-retrofit-fail", t.toString())
+                Log.d("my-retrofit-update-fail", t.toString())
             }
 
         })
@@ -107,18 +107,20 @@ class MyService {
 
         // baseUrl 안쓰는 부분이라 직접 빌드
         val schoolService = Retrofit.Builder()
-            .baseUrl("https://maps.googleapis.com/maps/api/place/findplacefromtext/json")
+            .baseUrl("https://maps.googleapis.com/maps/api/place/findplacefromtext/")
             .client(client)
             .addConverterFactory(GsonConverterFactory.create(gson)).build()
 //            .addConverterFactory(ScalarsConverterFactory.create()).build()
             .create(MyRetrofitInterface::class.java)
 
-        //    &inputtype=textquery
-        //    &fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=YOUR_API_KEY")
-//
+//        https://maps.googleapis.com/maps/api/place/findplacefromtext/json
+//  ?fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry
+//  &input=Museum%20of%20Contemporary%20Art%20Australia
+//  &inputtype=textquery
+//  &key=YOUR_API_KEY
 
-        schoolService.searchSchool(school, "textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=" +
-                "AIzaSyAXsUfo4iIKlZ2FqbVipMVl6T_Hevbrhig")
+        schoolService.searchSchool("formatted_address,name,rating,opening_hours,geometry",
+            school, "textquery", "AIzaSyAHbDljtK9IbzOieHJG7PavB2-YszxJq7s")
             .enqueue(object : Callback<SchoolResponse> {
                 override fun onResponse(call: Call<SchoolResponse>, response: Response<SchoolResponse>) {
                     if (response.isSuccessful) {
@@ -151,7 +153,7 @@ class MyService {
             }
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
-                Log.d("my-retrofit-fail", t.toString())
+                Log.d("my-retrofit-school-fail", t.toString())
             }
 
         })
@@ -162,11 +164,11 @@ class MyService {
 
         deleteMyService.deleteMy(memberId).enqueue(object : retrofit2.Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Log.d("my-retrofit", response.toString())
+                Log.d("my-retrofit-del", response.toString())
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.d("my-retrofit-fail", t.toString())
+                Log.d("my-retrofit-del-fail", t.toString())
             }
 
         })

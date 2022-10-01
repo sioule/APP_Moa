@@ -21,10 +21,12 @@ interface MyRetrofitInterface {
     //    &inputtype=textquery
     //    &fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=YOUR_API_KEY")
 //
-    @GET()
+    @GET("json")
     fun searchSchool(
+        @Query("fields") fields: String,
         @Query("input") input: String,
-        @Query("inputtype") type: String
+        @Query("inputtype") type: String,
+        @Query("key") key: String
     ) : retrofit2.Call<SchoolResponse>
 
 

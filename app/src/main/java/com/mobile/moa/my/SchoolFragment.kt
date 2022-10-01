@@ -1,6 +1,7 @@
 package com.mobile.moa.my
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.mobile.moa.R
 import com.mobile.moa.databinding.FragmentMyBinding
 import com.mobile.moa.databinding.FragmentSchoolBinding
+import kotlin.math.log
 
 class SchoolFragment : Fragment(), SchoolView {
 
@@ -33,6 +35,14 @@ class SchoolFragment : Fragment(), SchoolView {
     private fun searchSchool(school: String) {
         myService.searchSchool(school)
 //        myService.putSchool(school)
+    }
+
+    override fun onSearchSchoolSuccess(schoolResponse: SchoolResponse) {
+        Log.d("school-fragment-success", schoolResponse.candidates[0].name)
+    }
+
+    override fun onSearchSchoolFail() {
+        TODO("Not yet implemented")
     }
 
 }

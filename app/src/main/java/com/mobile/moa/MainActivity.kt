@@ -1,6 +1,7 @@
 package com.mobile.moa
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import com.mobile.moa.asset.AssetFragment
 import com.mobile.moa.databinding.ActivityMainBinding
 import com.mobile.moa.home.HomeFragment
 import com.mobile.moa.mileage.MileageShopFragment
+import com.mobile.moa.my.LoginActivity
 import com.mobile.moa.my.MyFragment
 import com.mobile.moa.pocket_book.PocketBookFragment
 
@@ -25,9 +27,21 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(getJwt().equals(0)) {
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
         initBottomNavigation()
         setStatusBarTransparent()
     }
+
+    private fun getJwt(): Long {
+        val memberId = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return memberId.getLong("jwt", 0)
+    }
+
 
     private fun initBottomNavigation(){
 

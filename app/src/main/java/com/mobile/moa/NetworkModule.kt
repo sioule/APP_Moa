@@ -12,7 +12,7 @@ import javax.net.ssl.HttpsURLConnection
 /* written by keh
 date: 22.07.31 */
 
-const val BASE_URL = "https://" //추후 수정
+const val BASE_URL = "https://15.164.199.153" //추후 수정
 
 fun getRetrofit(): Retrofit {
     val interceptor = HttpLoggingInterceptor().apply {
