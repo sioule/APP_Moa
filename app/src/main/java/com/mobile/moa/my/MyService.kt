@@ -148,7 +148,7 @@ class MyService {
                 if (response.isSuccessful) {
                     val my = response.body()!!
                     myView.onPutSchoolSuccess(my)
-                    Log.d("my-retrofit", my.id.toString())
+                    Log.d("my-retrofit-school", my.id.toString())
                 }
             }
 

@@ -39,7 +39,7 @@ class MyFragment : Fragment(), MyView {
         myService.getMyPage(getJwt())
 
         //학교 등록하기
-        binding.mySchoolBtn.setOnClickListener{
+        binding.mySchoolCv.setOnClickListener{
 //            myService.putSchool(getJwt(), school)
             val intent = Intent(activity, SchoolActivity::class.java)
             activity?.startActivity(intent)
@@ -48,17 +48,17 @@ class MyFragment : Fragment(), MyView {
         }
 
         //스크랩 리스트 보기
-        binding.myScrapBtn.setOnClickListener{
+        binding.myScrapCv.setOnClickListener{
             myService.updateMyPage(getJwt())
         }
 
         //목표 관리 페이지
-        binding.myGoalBtn.setOnClickListener{
-            //goal fragment or activity 연결
-        }
+//        binding..setOnClickListener{
+//            //goal fragment or activity 연결
+//        }
 
         //로그아웃
-        binding.logoutTv.setOnClickListener{
+        binding.myLogoutCv.setOnClickListener{
 
         }
 
@@ -81,7 +81,7 @@ class MyFragment : Fragment(), MyView {
     }
 
     override fun onPutSchoolSuccess(myResponse: MyResponse) {
-        TODO("Not yet implemented")
+        Log.d("put-school-fragment", myResponse.nickname)
     }
 
     override fun onUpdateMySuccess(myResponse: MyResponse) {
