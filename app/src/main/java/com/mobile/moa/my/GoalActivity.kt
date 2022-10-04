@@ -63,6 +63,22 @@ class GoalActivity : AppCompatActivity() {
 
             override fun onFailure(call: Call<List<Goal>>, t: Throwable) {
                 //Toast.makeText(context, "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                val list1= Goal(1.toLong(), "군것질거리",10000, false, "2020-10")
+                val list2= Goal(2.toLong(), "교통비",20000, false, "2022-10")
+                val list3= Goal(3.toLong(), "콘서트",100000, false, "2022-10")
+                val list4= Goal(4.toLong(), "매점",8000, false, "2022-10")
+                val list5= Goal(5.toLong(), "편의점",9000, false, "2022-10")
+                val list6= Goal(6.toLong(), "떡볶이",5000, false, "2022-10")
+
+                val testList = ArrayList<Goal>()
+                testList.add(list1)
+                testList.add(list2)
+                testList.add(list3)
+                testList.add(list4)
+                testList.add(list5)
+                testList.add(list6)
+
+                goalData = testList
             }
 
         })

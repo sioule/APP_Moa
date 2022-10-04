@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.moa.R
 import com.mobile.moa.databinding.FragmentAssetBinding
 import com.mobile.moa.databinding.FragmentAssetListBinding
 import com.mobile.moa.model.Account
 import com.mobile.moa.model.Balance
+import com.mobile.moa.model.Goal
 import com.mobile.moa.model.UserInfo
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,14 +26,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AssetListFragment : Fragment() {
     lateinit var binding: FragmentAssetListBinding
+    lateinit var user_seq_no: String
+    lateinit var bank_tran_id: String
 
-    var user_seq_no = "" // TODO user_seq_no 불러오기
-    var bank_tran_id = "" // TODO 은행거래고유번호 생성
+    var access_info = this.requireActivity().getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+    var access_token = access_info.getString("access_info", "")
+
     lateinit var userData: UserInfo
     lateinit var balanceData: ArrayList<Balance>
+    lateinit var testList: ArrayList<Balance>
     var memberId = 1.toLong() // TODO 멤버 아이디 불러오기
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -51,12 +59,14 @@ class AssetListFragment : Fragment() {
 
     // 사용자 정보 조회 (계좌 정보)
     private fun getAccount() {
-        val call: Call<UserInfo> = ServiceCreator.service.getUserInfo(user_seq_no)
+        bank_tran_id = "M202201889" + "U000000" + (Random().nextInt(900) + 100)
+        val call: Call<UserInfo> = ServiceCreator.service.getUserInfo(access_token!!, user_seq_no)
 
         call.enqueue(object : Callback<UserInfo> {
             override fun onResponse(call: Call<UserInfo>, response: Response<UserInfo>) {
                 if (response.isSuccessful) {
                     userData = response.body()!!
+                    user_seq_no = response.body()!!.user_seq_no
                 } else {
                     Toast.makeText(context, "실패", Toast.LENGTH_SHORT).show()
                 }
@@ -64,6 +74,7 @@ class AssetListFragment : Fragment() {
 
             override fun onFailure(call: Call<UserInfo>, t: Throwable) {
                 //Toast.makeText(context, "서버 연결 실패", Toast.LENGTH_SHORT).show()
+
             }
 
         })
@@ -80,16 +91,16 @@ class AssetListFragment : Fragment() {
             val tran_dtime = current.format(formatter).toString()
 
             val fintech_use_num = userData.res_list.get(i).fintech_use_num.toString()
-            val call: Call<Balance> = ServiceCreator.service.getAccountBalance(bank_tran_id, fintech_use_num, tran_dtime)
+            val call: Call<Balance> = ServiceCreator.service.getAccountBalance(access_token!!, bank_tran_id, fintech_use_num, tran_dtime)
 
             call.enqueue(object : Callback<Balance> {
                 override fun onResponse(call: Call<Balance>, response: Response<Balance>) {
                     if (response.isSuccessful) {
                         balanceData.add(response.body()!!)
+
                     } else {
                         Toast.makeText(context, "실패", Toast.LENGTH_SHORT).show()
                     }
-                    setAdapter()
                 }
 
                 override fun onFailure(call: Call<Balance>, t: Throwable) {
@@ -98,11 +109,19 @@ class AssetListFragment : Fragment() {
 
             })
         }
+
+        testList = ArrayList<Balance>()
+        val list1= Balance("", "", "", "", "", "", "", "", "", "", "51245", "", "", "mini", "카카오뱅크", "", "", "", "")
+        val list2= Balance("", "", "", "", "", "", "", "", "", "", "3000", "", "", "저축통장", "신한은행", "", "", "", "")
+
+        testList.add(list1)
+        testList.add(list2)
+        setAdapter()
     }
 
     // 계좌 내역
     private fun setAdapter(){
-        val manageAdapter = AccountAdapter(balanceData)
+        val manageAdapter = AccountAdapter(testList)
 
         binding.assetBankbookList.layoutManager = LinearLayoutManager(context)
         binding.assetBankbookList.adapter = manageAdapter

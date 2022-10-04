@@ -17,7 +17,6 @@ import com.mobile.moa.auth.AuthView
 import com.mobile.moa.databinding.FragmentMyBinding
 import okhttp3.ResponseBody
 import kotlin.math.log
-import androidx.navigation.fragment.findNavController
 
 /* written by keh
 date: 22.05.30

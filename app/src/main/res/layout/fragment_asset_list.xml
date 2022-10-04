@@ -71,13 +71,15 @@
 
             <TextView
                 android:id="@+id/cash_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/asset_cash"
-                android:text="0,000원"
+                android:text="5,000원"
                 android:textAlignment="textEnd" />
 
             <TextView
@@ -90,16 +92,19 @@
 
             <TextView
                 android:id="@+id/mileage_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginRight="30dp"
                 android:background="@drawable/asset_cash"
-                android:text="0,000원"
+                android:text="312원"
                 android:textAlignment="textEnd" />
 
             <TextView
+                android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp" />

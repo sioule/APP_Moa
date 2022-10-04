@@ -14,7 +14,6 @@
     <padding
         android:bottom="30dp"
         android:top="30dp"
-        android:left="250dp"
         android:right="30dp"
         />
 
