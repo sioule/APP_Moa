@@ -1,6 +1,9 @@
 package com.mobile.moa.mileage
 
+import com.google.gson.annotations.SerializedName
+
 data class ShopResponse (
-    //db 설계 보고 수정 해야 됨
-    val isSuccess:Boolean, val title:String
+    @SerializedName("name") val name: String,
+    @SerializedName("lat") val lat: String,
+    @SerializedName("lng") val lng: String
     )

@@ -90,6 +90,17 @@
             android:textColor="#F44336"
             android:textSize="13sp" />
 
+        <TextView
+            android:id="@+id/my_school_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="12.5dp"
+            android:text="휘경여자고등학교"
+            android:textColor="#F44336"
+            android:textSize="13sp"
+            android:visibility="invisible"/>
+
     </com.google.android.material.card.MaterialCardView>
 <!--    </androidx.cardview.widget.CardView>-->
 
@@ -221,9 +232,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginBottom="30dp"
-                android:text="회원탈퇴"
+                android:text="회원 탈퇴하러 가기"
                 android:textSize="12sp"
-                android:textColor="@color/black"
+                android:textColor="#808080"
                 android:padding="10dp"/>
 
 

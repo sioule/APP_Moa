@@ -1,5 +1,6 @@
 package com.mobile.moa.mileage
 
 interface ShopView {
-    fun onShopListSuccess()
+    fun onShopListSuccess(shopList: List<ShopResponse>)
+    fun onShopListFailure()
 }

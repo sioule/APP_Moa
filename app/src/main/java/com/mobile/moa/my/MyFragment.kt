@@ -16,6 +16,7 @@ import com.mobile.moa.auth.AuthService
 import com.mobile.moa.auth.AuthView
 import com.mobile.moa.databinding.FragmentMyBinding
 import okhttp3.ResponseBody
+import okhttp3.internal.notify
 import kotlin.math.log
 
 /* written by keh
@@ -42,7 +43,7 @@ class MyFragment : Fragment(), MyView {
         binding.mySchoolCv.setOnClickListener{
 //            myService.putSchool(getJwt(), school)
             val intent = Intent(activity, SchoolActivity::class.java)
-            activity?.startActivity(intent)
+//            activity?.startActivity(intent)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
@@ -70,6 +71,11 @@ class MyFragment : Fragment(), MyView {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        notify()
+    }
+
     private fun getJwt(): Long {
         val memberId = this.activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return memberId!!.getLong("jwt", 0)
@@ -78,6 +84,15 @@ class MyFragment : Fragment(), MyView {
 
     override fun onGetMySuccess(myResponse: MyResponse) {
         binding.myNicknameTv.text = myResponse.nickname
+        if (myResponse.school.equals(null)) {
+            binding.mySchoolTv.visibility = View.VISIBLE
+            binding.mySchoolNameTv.visibility = View.INVISIBLE
+        }
+        else {
+            binding.mySchoolTv.visibility = View.INVISIBLE
+            binding.mySchoolNameTv.visibility = View.VISIBLE
+            binding.mySchoolNameTv.text = myResponse.school
+        }
     }
 
     override fun onPutSchoolSuccess(myResponse: MyResponse) {

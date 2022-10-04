@@ -9,6 +9,8 @@ date: 22.06.24*/
 //서버 연결 후 사용
 
 interface ShopRetrofitInterface {
-    @GET("/shops")
-    fun getShops(): Call<ShopResponse>
+    @GET("/store")
+    fun getShopList(
+
+    ): Call<List<ShopResponse>>
 }
