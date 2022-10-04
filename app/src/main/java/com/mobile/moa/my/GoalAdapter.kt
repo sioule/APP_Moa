@@ -8,7 +8,7 @@ import com.mobile.moa.R
 import com.mobile.moa.databinding.ItemAssetGoalBinding
 import com.mobile.moa.model.Goal
 
-class GoalAdapter(private val myDataset: List<GoalResponse>):
+class GoalAdapter(private val myDataset: List<Goal>):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class MyViewHolder(var binding: ItemAssetGoalBinding) : RecyclerView.ViewHolder(binding.root)

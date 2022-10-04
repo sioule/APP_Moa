@@ -17,6 +17,7 @@ import com.mobile.moa.auth.AuthView
 import com.mobile.moa.databinding.FragmentMyBinding
 import okhttp3.ResponseBody
 import kotlin.math.log
+import androidx.navigation.fragment.findNavController
 
 /* written by keh
 date: 22.05.30
@@ -50,7 +51,10 @@ class MyFragment : Fragment(), MyView {
 
         //목표 관리 페이지
         binding.myGoalBtn.setOnClickListener{
-            //goal fragment or activity 연결
+            activity?.let{
+                val intent = Intent(context, GoalActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         //로그아웃

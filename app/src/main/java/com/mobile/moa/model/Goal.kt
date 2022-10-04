@@ -6,5 +6,4 @@ data class Goal (
     val price: Long,
     val completed: Boolean,
     val date: String,
-    val money:Long,
 )

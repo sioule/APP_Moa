@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceCreator {
-    private const val BASE_URL = "" // TODO url 설정
+    private const val BASE_URL = "http://15.164.199.153" // TODO url 설정
 
     // Retrofit 객체 생성
     val retrofit: Retrofit
