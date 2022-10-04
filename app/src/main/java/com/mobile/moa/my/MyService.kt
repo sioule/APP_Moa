@@ -9,10 +9,7 @@ import com.mobile.moa.auth.AuthRetrofitInterface
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
+import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 /* written by keh
@@ -23,6 +20,7 @@ class MyService {
     private lateinit var myView: MyView
     private lateinit var signUpView: SignUpView
     private lateinit var schoolView: SchoolView
+    private lateinit var loginView: LoginView
 
     fun setMyView(myView: MyView) {
         this.myView = myView
@@ -34,6 +32,10 @@ class MyService {
 
     fun setSchoolView(schoolView: SchoolView) {
         this.schoolView = schoolView
+    }
+
+    fun setLoginView(loginView: LoginView) {
+        this.loginView = loginView
     }
 
     fun signUp(requestSignUp: RequestSignUp) {
@@ -50,6 +52,24 @@ class MyService {
 
             override fun onFailure(call: Call<MyResponse>, t: Throwable) {
                 Log.d("my-retrofit-sign-fail", t.toString())
+            }
+
+        })
+    }
+
+    fun login(email: String, password: String) {
+        val loginService = getRetrofit().create(MyRetrofitInterface::class.java)
+
+        loginService.login(email, password).enqueue(object : retrofit2.Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    loginView.onLoginSuccess(response.body()!!)
+                    Log.d("my-retrofit-login", response.body().toString())
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.d("my-retrofit-login-fail", t.toString())
             }
 
         })

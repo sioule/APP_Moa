@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/home_nickname_tv"
+        android:id="@+id/login_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,15 +44,15 @@
         android:text="님의 총 자산"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@id/home_nickname_tv"
-         app:layout_constraintBottom_toBottomOf="@id/home_nickname_tv"/>
+        app:layout_constraintStart_toEndOf="@id/login_tv"
+         app:layout_constraintBottom_toBottomOf="@id/login_tv"/>
 
     <TextView
         android:id="@+id/home_asset_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/home_nickname_tv"
-        app:layout_constraintTop_toBottomOf="@+id/home_nickname_tv"
+        app:layout_constraintStart_toStartOf="@id/login_tv"
+        app:layout_constraintTop_toBottomOf="@+id/login_tv"
         android:textSize="22sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@id/home_asset_tv"
-        app:layout_constraintTop_toBottomOf="@+id/home_nickname_tv"
+        app:layout_constraintTop_toBottomOf="@+id/login_tv"
         android:textSize="22sp"
         android:textColor="@color/black"
         android:textStyle="bold"
