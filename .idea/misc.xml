@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/drawable/dialog_background.xml" value="0.1615" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/drawable/dialog_btn_background.xml" value="0.1615" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/drawable/ic_login_lock.xml" value="0.1615" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/drawable/ic_login_mail.xml" value="0.1615" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/drawable/ic_logout.xml" value="0.1615" />
@@ -13,6 +15,7 @@
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_school.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_school_item.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_sign.xml" value="0.22" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/dialog_scrap.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_asset.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_map.xml" value="0.1" />

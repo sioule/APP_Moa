@@ -17,7 +17,7 @@ interface MyRetrofitInterface {
     @POST("/login")
     fun login(
         @Body email: String, @Body password: String
-    ) : retrofit2.Call<ResponseBody>
+    ) : retrofit2.Call<LoginResponse>
 
     @GET("/myPage/{id}")
     fun getMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>

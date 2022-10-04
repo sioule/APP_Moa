@@ -5,7 +5,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.preference.PreferenceManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.GoogleMap
@@ -32,13 +31,14 @@ import com.mobile.moa.mileage.PermissionUtils.isPermissionGranted
 /* written by keh
 date: 22.06.13 */
 
-class MapFragment : Fragment(),
+class MapFragment : Fragment(), ShopView,
     GoogleMap.OnMyLocationButtonClickListener,
     GoogleMap.OnMyLocationClickListener,
     OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private lateinit var mapFg: MapView
     lateinit var binding: FragmentMapBinding
+    private var shopService = ShopService()
 
     private lateinit var client: FusedLocationProviderClient;
     private lateinit var map: GoogleMap
@@ -59,6 +59,10 @@ class MapFragment : Fragment(),
         mapFragment.getMapAsync(this)
 
         client = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        //서비스-뷰 연결
+        shopService.setShopView(this)
+        getShopList()
 
         return binding.root
     }
@@ -118,7 +122,7 @@ class MapFragment : Fragment(),
     }
 
     override fun onMyLocationButtonClick(): Boolean {
-        Toast.makeText(requireContext(), "MyLocation button clicked", Toast.LENGTH_SHORT)
+        Toast.makeText(requireContext(), "현재 위치로 이동합니다.", Toast.LENGTH_SHORT)
             .show()
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
@@ -164,6 +168,8 @@ class MapFragment : Fragment(),
         }
     }
 
+
+
 //    override fun onResumeFragments() {
 //        super.onResumeFragments()
 //        if (permissionDenied) {
@@ -189,8 +195,38 @@ class MapFragment : Fragment(),
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 
-    private fun getJwt(): Long {
-        val memberId = this.activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return memberId!!.getLong("jwt", 0)
+    private fun getShopList() {
+        if (getJwt() == null) {
+            Toast.makeText(activity, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
+        }
+        else {
+            shopService.getShopList(getJwt()!!)
+        }
+    }
+
+    private fun getMemberId(): Long {
+        val memberId = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return memberId!!.getLong("memberId", 0)
+    }
+
+    private fun getJwt(): String? {
+        val jwt = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return jwt!!.getString("jwt", null)
+    }
+
+    override fun onShopListSuccess(shopList: List<ShopResponse>) {
+        for(shop in shopList) {
+            val marker = LatLng(shop.lat.toDouble(), shop.lng.toDouble())
+            val markerOptions = MarkerOptions()
+            markerOptions.position(marker)
+            markerOptions.title(shop.name)
+        }
+    }
+
+    override fun onShopListFailure() {
+        Log.d("shopList-fragment", "fail")
+    }
+
+    override fun onAddScrapSuccess() {
     }
 }

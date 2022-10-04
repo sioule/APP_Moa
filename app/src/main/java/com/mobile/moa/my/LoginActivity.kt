@@ -40,17 +40,20 @@ class LoginActivity : AppCompatActivity(), LoginView {
         loginService.login(email, password)
     }
 
-    private fun saveJwt(jwt: String) {
+    private fun saveAuth(memberId: Long, jwt: String) {
         val spf = getSharedPreferences("auth", MODE_PRIVATE)
         val editor = spf.edit()
 
-        editor.putLong("jwt", 0)
+        editor.putLong("memberId", memberId)
+        editor.putString("jwt", jwt)
         editor.apply()
     }
 
-    override fun onLoginSuccess(responseBody: ResponseBody) {
-        Log.d("login-success-activity", responseBody.toString())
-//        saveJwt(responseBody)
+
+    override fun onLoginSuccess(loginResponse: LoginResponse) {
+        Log.d("login-success-activity", loginResponse.toString())
+        saveAuth(loginResponse.id, loginResponse.jwt)
+
     }
 
     override fun onLoginFailure() {

@@ -60,15 +60,15 @@ class MyService {
     fun login(email: String, password: String) {
         val loginService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        loginService.login(email, password).enqueue(object : retrofit2.Callback<ResponseBody>{
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+        loginService.login(email, password).enqueue(object : retrofit2.Callback<LoginResponse>{
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
                     loginView.onLoginSuccess(response.body()!!)
                     Log.d("my-retrofit-login", response.body().toString())
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 Log.d("my-retrofit-login-fail", t.toString())
             }
 
