@@ -150,7 +150,7 @@
 <!--        app:layout_constraintTop_toBottomOf="@+id/my_school_btn"/>-->
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/my_logout_cv"
+        android:id="@+id/my_update_cv"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -159,6 +159,37 @@
         app:cardCornerRadius="15dp"
         app:layout_constraintStart_toStartOf="@id/my_school_cv"
         app:layout_constraintTop_toBottomOf="@id/my_scrap_cv">
+
+        <ImageView
+            android:id="@+id/my_update_iv"
+            android:layout_width="18dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_mypage_update" />
+
+        <TextView
+            android:id="@+id/my_update_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:text="회원정보 수정"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/my_logout_cv"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintStart_toStartOf="@id/my_school_cv"
+        app:layout_constraintTop_toBottomOf="@id/my_update_cv">
 
         <ImageView
             android:id="@+id/my_logout_iv"

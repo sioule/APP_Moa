@@ -4,8 +4,7 @@ import android.util.Log
 import com.example.umc_hackathon.getRetrofit
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.mobile.moa.auth.AuthResponse
-import com.mobile.moa.auth.AuthRetrofitInterface
+import com.mobile.moa.mileage.ShopResponse
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,6 +20,7 @@ class MyService {
     private lateinit var signUpView: SignUpView
     private lateinit var schoolView: SchoolView
     private lateinit var loginView: LoginView
+    private lateinit var scrapView: ScrapView
 
     fun setMyView(myView: MyView) {
         this.myView = myView
@@ -36,6 +36,10 @@ class MyService {
 
     fun setLoginView(loginView: LoginView) {
         this.loginView = loginView
+    }
+
+    fun setScrapView(scrapView: ScrapView) {
+        this.scrapView = scrapView
     }
 
     fun signUp(requestSignUp: RequestSignUp) {
@@ -75,10 +79,10 @@ class MyService {
         })
     }
 
-    fun getMyPage(memberId: Long) {
+    fun getMyPage(memberId: Long, jwt: String) {
         val getMyService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        getMyService.getMyPage(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
+        getMyService.getMyPage(jwt, memberId).enqueue(object : retrofit2.Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 if (response.isSuccessful) {
                     val my = response.body()!!
@@ -94,10 +98,29 @@ class MyService {
         })
     }
 
-    fun updateMyPage(memberId: Long) {
+    fun getMyScrapList(memberId: Long, jwt: String) {
+        val getMyService = getRetrofit().create(MyRetrofitInterface::class.java)
+
+        getMyService.getMyScrapList(jwt, memberId).enqueue(object : retrofit2.Callback<List<ShopResponse>>{
+            override fun onResponse(call: Call<List<ShopResponse>>, response: Response<List<ShopResponse>>) {
+                if (response.isSuccessful) {
+                    val shopList = response.body()!!
+
+                    scrapView.onGetScrapListSuccess(shopList)
+                    Log.d("scrapList-retrofit", shopList.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<List<ShopResponse>>, t: Throwable) {
+                Log.d("scrapList-retrofit-fail", t.toString())
+            }
+        })
+    }
+
+    fun updateMyPage(memberId: Long, jwt: String) {
         val updateMyService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        updateMyService.updateMyPage(memberId).enqueue(object : retrofit2.Callback<MyResponse>{
+        updateMyService.updateMyPage(jwt, memberId).enqueue(object : retrofit2.Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 if (response.isSuccessful) {
                     val my = response.body()!!
@@ -179,10 +202,10 @@ class MyService {
         })
     }
 
-    fun deleteMy(memberId: Long) {
+    fun deleteMy(memberId: Long, jwt: String) {
         val deleteMyService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        deleteMyService.deleteMy(memberId).enqueue(object : retrofit2.Callback<ResponseBody>{
+        deleteMyService.deleteMy(jwt, memberId).enqueue(object : retrofit2.Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 Log.d("my-retrofit-del", response.toString())
             }

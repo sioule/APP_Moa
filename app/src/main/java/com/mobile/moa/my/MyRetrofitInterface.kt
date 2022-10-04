@@ -1,5 +1,6 @@
 package com.mobile.moa.my
 
+import com.mobile.moa.mileage.ShopResponse
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.http.*
@@ -20,7 +21,13 @@ interface MyRetrofitInterface {
     ) : retrofit2.Call<LoginResponse>
 
     @GET("/myPage/{id}")
-    fun getMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>
+    fun getMyPage(@Header("Authorization") jwt: String, @Path("id") id: Long) : retrofit2.Call<MyResponse>
+
+    @GET("/scrap/myPage/{memberId}")
+    fun getMyScrapList(
+        @Header("Authorization") jwt: String,
+        @Path("memberId") memberId: Long
+    ) : retrofit2.Call<List<ShopResponse>>
 
 //    ?input=Museum%20of%20Contemporary%20Art%20Australia
     //    &inputtype=textquery
@@ -42,8 +49,13 @@ interface MyRetrofitInterface {
     ) : retrofit2.Call<MyResponse>
 
     @PUT("/myPage/update/{id}")
-    fun updateMyPage(@Path("id") id: Long) : retrofit2.Call<MyResponse>
+    fun updateMyPage(
+        @Header("Authorization") jwt: String, @Path("id") id: Long
+    ) : retrofit2.Call<MyResponse>
 
     @DELETE("/myPage/{id}")
-    fun deleteMy(@Path("id") id: Long) : retrofit2.Call<ResponseBody>
+    fun deleteMy(
+        @Header("Authorization") jwt: String,
+        @Path("id") id: Long
+    ) : retrofit2.Call<ResponseBody>
 }

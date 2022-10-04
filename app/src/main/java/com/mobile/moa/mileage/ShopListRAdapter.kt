@@ -31,7 +31,7 @@ class ShopListRAdapter(private val shopList: List<ShopResponse>): RecyclerView.A
 
     fun setMyItemClickListener(myItemClickListener: MyItemClickListener){
         this.itemClickListener = myItemClickListener
-        Log.d("학교 선택", "my-adapter")
+        Log.d("사용처 선택", "my-adapter")
     }
 
     private lateinit var itemClickListener : MyItemClickListener

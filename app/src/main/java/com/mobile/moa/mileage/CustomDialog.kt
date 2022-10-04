@@ -15,13 +15,6 @@ class CustomDialog(
     private lateinit var onClickListener: OnDialogClickListener
     private val dialog = Dialog(context)
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        // 만들어놓은 dialog_profile.xml 뷰를 띄운다.
-//        binding = DialogSettingBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//        initViews()
-//    }
 
     fun setOnClickListener(listener: OnDialogClickListener)
     {

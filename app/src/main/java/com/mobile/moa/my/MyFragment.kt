@@ -15,6 +15,9 @@ import com.mobile.moa.auth.AuthResponse
 import com.mobile.moa.auth.AuthService
 import com.mobile.moa.auth.AuthView
 import com.mobile.moa.databinding.FragmentMyBinding
+import com.mobile.moa.mileage.CustomDialog
+import com.mobile.moa.mileage.ShopListRAdapter
+import com.mobile.moa.mileage.ShopResponse
 import okhttp3.ResponseBody
 import okhttp3.internal.notify
 import kotlin.math.log
@@ -37,9 +40,9 @@ class MyFragment : Fragment(), MyView {
         myService.setMyView(this)
 
         //사용자 정보 가져오기
-        myService.getMyPage(getJwt())
+        myService.getMyPage(getMemberId(), getJwt()!!)
 
-        //학교 등록하기
+        //학교 등록하기 - 액티비티 연결
         binding.mySchoolCv.setOnClickListener{
 //            myService.putSchool(getJwt(), school)
             val intent = Intent(activity, SchoolActivity::class.java)
@@ -48,9 +51,19 @@ class MyFragment : Fragment(), MyView {
             startActivity(intent)
         }
 
-        //스크랩 리스트 보기
+        //스크랩 리스트 보기 - 액티비티 연결
         binding.myScrapCv.setOnClickListener{
-            myService.updateMyPage(getJwt())
+//            myService.getMyScrapList(getMemberId(), getJwt()!!)
+            val intent = Intent(activity, SchoolActivity::class.java)
+//            activity?.startActivity(intent)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
+        }
+
+        //회원정보 수정하기
+        binding.myUpdateCv.setOnClickListener{
+            //수정 페이지 추가
+            myService.updateMyPage(getMemberId(), getJwt()!!)
         }
 
         //목표 관리 페이지
@@ -65,7 +78,8 @@ class MyFragment : Fragment(), MyView {
 
         //회원탈퇴
         binding.withdrawTv.setOnClickListener{
-            myService.deleteMy(getJwt())
+            //다이얼로그 추가
+            myService.deleteMy(getMemberId(), getJwt()!!)
         }
 
         return binding.root
@@ -76,9 +90,14 @@ class MyFragment : Fragment(), MyView {
         notify()
     }
 
-    private fun getJwt(): Long {
-        val memberId = this.activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return memberId!!.getLong("jwt", 0)
+    private fun getMemberId(): Long {
+        val memberId = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return memberId!!.getLong("memberId", 0)
+    }
+
+    private fun getJwt(): String? {
+        val jwt = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return jwt!!.getString("jwt", null)
     }
 
 
@@ -102,6 +121,7 @@ class MyFragment : Fragment(), MyView {
     override fun onUpdateMySuccess(myResponse: MyResponse) {
         binding.myNicknameTv.text = myResponse.nickname
     }
+    
 
 
 }
