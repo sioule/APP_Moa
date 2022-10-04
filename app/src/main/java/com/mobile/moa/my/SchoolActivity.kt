@@ -57,6 +57,7 @@ class SchoolActivity : AppCompatActivity(), SchoolView {
                                 schoolResponse.candidates[position].geometry.location.lat.toString(),
                                 schoolResponse.candidates[position].geometry.location.lng.toString()
                             )
+                            binding.putSchoolEt.setText(school.userSchool)
                         }
                     })
                 }

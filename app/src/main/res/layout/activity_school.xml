@@ -56,7 +56,7 @@
         android:layout_height="0dp"
         android:clipToPadding="false"
         android:paddingVertical="22.5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/put_school_ll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,14 +65,39 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"/>
 
-    <Button
-        android:id="@+id/school_put_btn"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:id="@+id/put_school_ll"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="25dp"
-        android:text="완료"
-        />
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="30dp">
+
+        <EditText
+            android:id="@+id/put_school_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/school_put_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="선택한 학교명"
+            android:layout_weight="4"
+            android:textSize="16sp"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/school_put_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="등록"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
