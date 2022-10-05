@@ -2,10 +2,7 @@ package com.mobile.moa.mileage
 
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 /*written by keh
 date: 22.06.24*/
@@ -27,6 +24,7 @@ interface ShopRetrofitInterface {
     @POST("/scrap/{memberId}")
     fun addScrap(
         @Header("Authorization") jwt: String,
-        @Path("memberId") memberId: Long
+        @Path("memberId") memberId: Long,
+        @Body shop: ShopResponse
     ): Call<ResponseBody>
 }

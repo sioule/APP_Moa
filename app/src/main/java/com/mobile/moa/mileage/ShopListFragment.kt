@@ -1,5 +1,6 @@
 package com.mobile.moa.mileage
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.moa.databinding.FragmentShopListBinding
@@ -47,46 +49,47 @@ class ShopListFragment : Fragment(), ShopView {
         binding.shopListRv.adapter = shopAdapter.apply {
             this.setMyItemClickListener(object : ShopListRAdapter.MyItemClickListener {
                 override fun onClick(position: Int) {
-                    val dialog = CustomDialog(context!!)
-                    dialog.scrap()
-                    dialog.setOnClickListener(object : CustomDialog.OnDialogClickListener {
-                        override fun onClicked(flag: Boolean) {
-                            if (flag) {
-                                addScrap()
-                            }
-                        }
-                    })
-                }
-//                    binding.putSchoolEt.setText(school.userSchool)
-//                        var dialog = AlertDialog.Builder(context!!)
-//                        dialog.setTitle("스크랩 하시겠습니까?")
-//
-//                        fun toast() {
-//                            Toast.makeText(activity, "스크랩에 추가 되었습니다.", Toast.LENGTH_SHORT).show()
-//                        }
-//
-//                        var dialogListener = DialogInterface.OnClickListener { p0, p1 ->
-//                            when (p1) {
-//                                DialogInterface.BUTTON_POSITIVE -> toast()
+//                    val dialog = CustomDialog(context!!)
+//                    dialog.scrap()
+//                    dialog.setOnClickListener(object : CustomDialog.OnDialogClickListener {
+//                        override fun onClicked(flag: Boolean) {
+//                            if (flag) {
+//                                addScrap()
 //                            }
 //                        }
-//
-//                        dialog.setPositiveButton("네", dialogListener)
-//                        dialog.setNegativeButton("아니요", null)
-//                        dialog.show()
-//                    }
+//                    })
+//                }
+//                    binding.putSchoolEt.setText(school.userSchool)
+                        var dialog = AlertDialog.Builder(context!!)
+                        dialog.setTitle("스크랩 하시겠습니까?")
+
+                        fun toast() {
+                            Toast.makeText(activity, "스크랩에 추가 되었습니다.", Toast.LENGTH_SHORT).show()
+                            addScrap(shopList[position])
+                        }
+
+                        var dialogListener = DialogInterface.OnClickListener { p0, p1 ->
+                            when (p1) {
+                                DialogInterface.BUTTON_POSITIVE -> toast()
+                            }
+                        }
+
+                        dialog.setPositiveButton("네", dialogListener)
+                        dialog.setNegativeButton("아니요", null)
+                        dialog.show()
+                    }
 //                }
 //            })
             })
         }
     }
 
-    private fun addScrap() {
+    private fun addScrap(shop: ShopResponse) {
         if (getJwt() == null) {
             Toast.makeText(activity, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
         }
         else {
-            shopService.addScrap(getMemberId(), getJwt()!!)
+            shopService.addScrap(getMemberId(), getJwt()!!, shop)
         }
     }
 

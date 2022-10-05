@@ -53,10 +53,10 @@ class ShopService {
         })
     }
 
-    fun addScrap(memberId: Long, jwt: String) {
+    fun addScrap(memberId: Long, jwt: String, shop: ShopResponse) {
         val shopService = getRetrofit().create(ShopRetrofitInterface::class.java)
 
-        shopService.addScrap(jwt, memberId).enqueue(object : retrofit2.Callback<ResponseBody>{
+        shopService.addScrap(jwt, memberId, shop).enqueue(object : retrofit2.Callback<ResponseBody>{
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
                     val scrap = response.body()!!

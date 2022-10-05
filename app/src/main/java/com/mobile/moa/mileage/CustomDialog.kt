@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.WindowManager
+import android.widget.Button
 import com.mobile.moa.R
 
 class CustomDialog(
@@ -23,6 +24,7 @@ class CustomDialog(
 
     fun scrap(){
         // 뒤로가기 버튼, 빈 화면 터치를 통해 dialog가 사라지지 않도록
+//        dialog.setContentView(R.layout.dialog_scrap)
         dialog.setContentView(R.layout.dialog_scrap)
         dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -30,14 +32,21 @@ class CustomDialog(
         dialog.show()
 
         // OK Button 클릭에 대한 Callback 처리. 이 부분은 상황에 따라 자유롭게!
-        dialog .setOnClickListener {
-            onClickListener.onClicked(false)
-            dialog.dismiss()
-        }
-        dialog.yes.setOnClickListener {
-            onClickListener.onClicked(true)
-            dialog.dismiss()
-        }
+//        dialog
+//        dialog
+//            .setOnClickListener {
+//            onClickListener.onClicked(false)
+//            dialog.dismiss()
+//        }
+//        dialog. .setOnClickListener {
+//            onClickListener.onClicked(true)
+//            dialog.dismiss()
+//       }
+
+//        R.id.scrap_yes_btn.setOnClickListener {
+//            onClickListener.onClicked(true)
+//            dialog.dismiss()
+//        }
 
     }
 
