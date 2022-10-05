@@ -67,7 +67,7 @@ class MyFragment : Fragment(), MyView {
         }
 
         //목표 관리 페이지
-        binding.myGoalBtn.setOnClickListener{
+        binding.myGoalCv.setOnClickListener{
             activity?.let{
                 val intent = Intent(context, GoalActivity::class.java)
                 startActivity(intent)
