@@ -9,7 +9,7 @@ import com.mobile.moa.model.Shop
 /*written by keh
 date: 22.06.24*/
 
-class ShopRVAdapter(private val shopList: ArrayList<Shop>) : RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {
+class ShopRVAdapter(private val shopList: List<ShopResponse>) : RecyclerView.Adapter<ShopRVAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,7 +20,7 @@ class ShopRVAdapter(private val shopList: ArrayList<Shop>) : RecyclerView.Adapte
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(shopList[position])
+//        holder.bind(shopList[position])
     }
 
     override fun getItemCount(): Int = shopList.size
@@ -31,4 +31,10 @@ class ShopRVAdapter(private val shopList: ArrayList<Shop>) : RecyclerView.Adapte
             binding.itemAlbumCoverImgIv.setImageResource(shop.img!!)
         }
     }
+
+//    class ShopListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//        val name: TextView = itemView.findViewById(R.id.shop_name_item_tv)
+////        val address : TextView = itemView.findViewById(R.id.school_address_item_tv)
+//    }
+
 }

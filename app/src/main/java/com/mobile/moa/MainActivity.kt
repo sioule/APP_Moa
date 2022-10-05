@@ -27,20 +27,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(getJwt().equals(0)) {
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-        }
+//        if(getJwt().equals(0)) {
+//            val intent = Intent(this, LoginActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+//            startActivity(intent)
+//        }
 
         initBottomNavigation()
         setStatusBarTransparent()
     }
 
-    private fun getJwt(): Long {
-        val memberId = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return memberId.getLong("jwt", 0)
-    }
+//    private fun getJwt(): Long {
+//        val memberId = getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+//        return memberId.getLong("jwt", 0)
+//    }
 
 
     private fun initBottomNavigation(){
