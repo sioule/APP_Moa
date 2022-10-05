@@ -19,10 +19,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ScrapActivity"
+            android:name=".my.ScrapActivity"
             android:exported="false" />
         <activity
             android:name=".my.SchoolActivity"
+            android:exported="false" />
+        <activity
+            android:name=".my.GoalActivity"
             android:exported="false" />
         <activity
             android:name=".my.LoginActivity"

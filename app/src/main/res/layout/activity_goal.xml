@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F8DA00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/goal_date_year_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="21dp"
+            android:text="2022"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="년"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/goal_date_year_tv"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/goal_date_month_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="10"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="월"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/goal_date_month_tv"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/goal_achievement_pre_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:text="5"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:text="목표 달성"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/goal_before_btn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/goal_achievement_total_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="15dp"
+            android:text="6"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="44dp"
+            android:text="현재달성률"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goal_date_year_tv" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:text="/"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/goal_achievement_pre_tv"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/goal_achievement_rate_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="83%"
+            android:textColor="#BC3A30"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/goal_before_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="33dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_before" />
+
+        <View
+            android:id="@+id/goal_rate1"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate2"
+            android:layout_width="4dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_rate3"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate1"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate3"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_achievement_rate_tv"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate1"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate4"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_rate5"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate3"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate5"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_achievement_rate_tv"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate1"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate6"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_rate7"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate5"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate7"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_achievement_rate_tv"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate1"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate8"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="#BC3A30"
+            app:layout_constraintEnd_toStartOf="@+id/goal_rate9"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate7"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate9"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/goal_achievement_rate_tv"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate1"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+        <View
+            android:id="@+id/goal_rate10"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/goal_achievement_rate"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/goal_achievement_rate_tv"
+            app:layout_constraintStart_toEndOf="@+id/goal_rate9"
+            app:layout_constraintTop_toBottomOf="@+id/goal_achievement_pre_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/goal_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/item_asset_goal">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/goal_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:text="+"
+        android:textColor="#F8DA00"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:text="자유 목표"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

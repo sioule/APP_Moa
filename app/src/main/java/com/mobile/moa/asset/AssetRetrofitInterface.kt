@@ -21,12 +21,14 @@ interface AssetRetrofitInterface {
    // 사용자 정보 조회 (계좌 정보)
    @GET("https://testapi.openbanking.or.kr/v2.0/user/me")
    fun getUserInfo(
+      @Header("access_token") access_token: String,
       @Query("user_seq_no") user_seq_no: String,
    ): Call<UserInfo>
 
    // 계좌 잔액 조회
    @GET("https://testapi.openbanking.or.kr/oauth/2.0/account/balance/fin_num")
    fun getAccountBalance(
+      @Header("access_token") access_token: String,
       @Query("bank_tran_id") bank_tran_id: String, // 은행거래고유번호
       @Query("fintech_use_num") fintech_use_num: String, // 핀테크이용번호
       @Query("tran_dtime") tran_dtime: String // 현재 시간

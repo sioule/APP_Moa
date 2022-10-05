@@ -67,9 +67,12 @@ class MyFragment : Fragment(), MyView {
         }
 
         //목표 관리 페이지
-//        binding..setOnClickListener{
-//            //goal fragment or activity 연결
-//        }
+        binding.myGoalBtn.setOnClickListener{
+            activity?.let{
+                val intent = Intent(context, GoalActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         //로그아웃
         binding.myLogoutCv.setOnClickListener{
@@ -121,7 +124,6 @@ class MyFragment : Fragment(), MyView {
     override fun onUpdateMySuccess(myResponse: MyResponse) {
         binding.myNicknameTv.text = myResponse.nickname
     }
-    
 
 
 }
