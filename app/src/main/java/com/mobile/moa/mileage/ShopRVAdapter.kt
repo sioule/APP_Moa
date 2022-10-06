@@ -1,5 +1,6 @@
 package com.mobile.moa.mileage
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,15 +21,17 @@ class ShopRVAdapter(private val shopList: List<ShopResponse>) : RecyclerView.Ada
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.bind(shopList[position])
+        holder.bind(shopList[position])
     }
 
     override fun getItemCount(): Int = shopList.size
 
     inner class ViewHolder(val binding: ItemHomeShopBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(shop: Shop) {
-            binding.itemAlbumCoverImgIv.setImageResource(shop.img!!)
+        fun bind(shop: ShopResponse) {
+            Log.d("shop-adapter", "bind")
+//            binding.itemAlbumCoverImgIv.setImageResource()
+            binding.shopNameItemTv.text = shop.name
         }
     }
 

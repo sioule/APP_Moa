@@ -34,13 +34,13 @@ class AssetListFragment : Fragment() {
     lateinit var user_seq_no: String
     lateinit var bank_tran_id: String
 
-    var access_info = this.requireActivity().getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
-    var access_token = access_info.getString("access_info", "")
+//    var access_info = context?.getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+//    var access_token = access_info?.getString("access_info", "")
 
     lateinit var userData: UserInfo
     lateinit var balanceData: ArrayList<Balance>
     lateinit var testList: ArrayList<Balance>
-    var memberId = 1.toLong() // TODO 멤버 아이디 불러오기
+//    var memberId = 1.toLong() // TODO 멤버 아이디 불러오기
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -48,6 +48,9 @@ class AssetListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAssetListBinding.inflate(inflater, container, false)
+
+//        var access_info = context?.getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+//        var access_token = access_info?.getString("access_info", "")
 
         getAccount()
         getAccountBalance()
@@ -60,7 +63,7 @@ class AssetListFragment : Fragment() {
     // 사용자 정보 조회 (계좌 정보)
     private fun getAccount() {
         bank_tran_id = "M202201889" + "U000000" + (Random().nextInt(900) + 100)
-        val call: Call<UserInfo> = ServiceCreator.service.getUserInfo(access_token!!, user_seq_no)
+        val call: Call<UserInfo> = ServiceCreator.service.getUserInfo(getToken()!!, user_seq_no)
 
         call.enqueue(object : Callback<UserInfo> {
             override fun onResponse(call: Call<UserInfo>, response: Response<UserInfo>) {
@@ -91,7 +94,7 @@ class AssetListFragment : Fragment() {
             val tran_dtime = current.format(formatter).toString()
 
             val fintech_use_num = userData.res_list.get(i).fintech_use_num.toString()
-            val call: Call<Balance> = ServiceCreator.service.getAccountBalance(access_token!!, bank_tran_id, fintech_use_num, tran_dtime)
+            val call: Call<Balance> = ServiceCreator.service.getAccountBalance(getToken()!!, bank_tran_id, fintech_use_num, tran_dtime)
 
             call.enqueue(object : Callback<Balance> {
                 override fun onResponse(call: Call<Balance>, response: Response<Balance>) {
@@ -134,7 +137,7 @@ class AssetListFragment : Fragment() {
 
     // 마일리지 조회
     private fun getMileage() {
-        val call: Call<AssetResponse> = ServiceCreator.service.getMileage(memberId)
+        val call: Call<AssetResponse> = ServiceCreator.service.getMileage(getMemberId())
 
         call.enqueue(object : Callback<AssetResponse> {
             override fun onResponse(call: Call<AssetResponse>, response: Response<AssetResponse>) {
@@ -154,7 +157,7 @@ class AssetListFragment : Fragment() {
 
     // 현금 조회
     private fun getCash() {
-        val call: Call<AssetResponse> = ServiceCreator.service.getCash(memberId)
+        val call: Call<AssetResponse> = ServiceCreator.service.getCash(getMemberId())
 
         call.enqueue(object : Callback<AssetResponse> {
             override fun onResponse(call: Call<AssetResponse>, response: Response<AssetResponse>) {
@@ -170,6 +173,21 @@ class AssetListFragment : Fragment() {
             }
 
         })
+    }
+
+    private fun getMemberId(): Long {
+        val memberId = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return memberId!!.getLong("memberId", 4)
+    }
+
+    private fun getJwt(): String? {
+        val jwt = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return jwt!!.getString("jwt", null)
+    }
+
+    private fun getToken(): String? {
+        val token = activity?.getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+        return token!!.getString("access_token", null)
     }
 
 }

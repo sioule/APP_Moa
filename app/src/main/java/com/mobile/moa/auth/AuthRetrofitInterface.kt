@@ -1,5 +1,6 @@
 package com.mobile.moa.auth
 
+import com.mobile.moa.asset.AssetResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -42,4 +43,11 @@ interface AuthRetrofitInterface {
         @Field("grant_type") grant_type: String
     ): Call<AuthResponse>
 //    ): Call<ResponseBody>
+
+
+    @GET("account/balance/fin_num")
+    fun total(
+        @Header("Authorization") token: String,
+        @Query("user_seq_no") user_seq_no: String
+    ): Call<AssetResponse>
 }

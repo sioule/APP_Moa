@@ -17,6 +17,7 @@ import androidx.core.view.WindowCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.mobile.moa.asset.AssetResponse
 import com.mobile.moa.databinding.FragmentHomeBinding
 import com.mobile.moa.mileage.*
 import com.mobile.moa.model.Shop
@@ -25,12 +26,13 @@ import com.mobile.moa.my.LoginActivity
 /* written by keh
 date: 22.07.04 */
 
-class HomeFragment : Fragment(), ShopView {
+class HomeFragment : Fragment(), ShopView, AssetView {
 
     lateinit var binding: FragmentHomeBinding
 //    private var shopDatas = ArrayList<Shop>()
 
     private var shopService = ShopService()
+    private var assetService = AssetService()
 
 
     override fun onCreateView(
@@ -48,6 +50,14 @@ class HomeFragment : Fragment(), ShopView {
             startActivity(intent)
         }
 
+        assetService.setAssetView(this)
+
+//        getSeq()
+//        getTotal()
+//        if (getToken() != null) {
+//            getTotal()
+//        }
+
         shopService.setShopView(this)
 
 //        binding.homeMileageRv.adapter = shopRVAdapter
@@ -57,7 +67,11 @@ class HomeFragment : Fragment(), ShopView {
         getShopList()
 
         return binding.root
+    }
 
+    private fun getTotal() {
+//        assetService.total(getToken()!!, getSeq()!!)
+        assetService.total("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIxMTAxMDEwODk4Iiwic2NvcGUiOlsiaW5xdWlyeSIsImxvZ2luIiwidHJhbnNmZXIiXSwiaXNzIjoiaHR0cHM6Ly93d3cub3BlbmJhbmtpbmcub3Iua3IiLCJleHAiOjE2NzI4NTIwNjYsImp0aSI6Ijk2OGViNmExLTgwNzAtNDI1ZS05YmNjLTM2MTIxMTFkYjE5OCJ9.qCfFiZUtVFSb-zcYOpJUys77CbGr9d9VLz4PArThgpw","1101010898")
     }
 
     private fun getShopList() {
@@ -85,7 +99,7 @@ class HomeFragment : Fragment(), ShopView {
 
 
     override fun onShopListSuccess(shopList: List<ShopResponse>) {
-        val shopRVAdapter = ShopListRAdapter(shopList)
+        val shopRVAdapter = ShopRVAdapter(shopList)
         binding.homeMileageRv.adapter = shopRVAdapter
     }
 
@@ -109,7 +123,21 @@ class HomeFragment : Fragment(), ShopView {
 //        }
 //    }
 
+    private fun getToken(): String? {
+        val token = activity?.getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+        Log.d("token-now", token?.getString("access_token", null).toString())
+        return token?.getString("access_token", null)
+    }
 
+    private fun getSeq(): String? {
+        val token = activity?.getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+        Log.d("seq-now", token?.getString("seq", null).toString())
+        return token?.getString("seq", null)
+    }
+
+    override fun onGetTotalSuccess(assetResponse: AssetResponse) {
+        binding.homeAssetTv.text = assetResponse.available_amt
+    }
 
 
 }

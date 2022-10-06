@@ -10,11 +10,17 @@
         date: 22.05.30-->
 
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="자산" />
+        android:id="@+id/asset_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="45dp"
+        android:text="자산"
+        android:textColor="#2E2E2E"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/certification_btn"
@@ -22,17 +28,29 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="본인 인증" />
+
+    <FrameLayout
+        android:id="@+id/asset_frm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/asset_tv"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </FrameLayout>
 
     <WebView
         android:id="@+id/authWebView"
+        android:layout_marginTop="50dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/certification_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/asset_tv" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

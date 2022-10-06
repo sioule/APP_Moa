@@ -19,6 +19,7 @@
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/activity_sign.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/dialog_scrap.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_asset.xml" value="0.1" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_asset_list.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_milage.xml" value="0.1" />
@@ -30,6 +31,7 @@
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_item.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_list.xml" value="0.1" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/fragment_shop_list_item.xml" value="0.175" />
+        <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/item_asset_bankbook.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/item_home_mileage.xml" value="0.13125" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/item_home_shop.xml" value="0.175" />
         <entry key="..\:/Work/haniumM/MoA/app/src/main/res/layout/school_search_item.xml" value="0.175" />

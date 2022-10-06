@@ -26,7 +26,9 @@ import java.util.*
 class MyWebViewClient : WebViewClient(){
 
 
+    private var authService = AuthService()
     private lateinit var authView: AuthView
+    private var assetFragment = AssetFragment()
 
     fun setCertificationView(authView: AuthView) {
         this.authView = authView
@@ -41,6 +43,7 @@ class MyWebViewClient : WebViewClient(){
     override fun onPageFinished(view: WebView?, url: String?) {
         super.onPageFinished(view, url)
     }
+
 
     override fun shouldInterceptRequest(
         view: WebView?,
@@ -67,7 +70,7 @@ class MyWebViewClient : WebViewClient(){
                 Log.d("body", c)
 
 //                authService?.setCertificationView(this)
-                authCertification(c)
+                assetFragment.authCertification(c)
 
 //                view!!.postUrl("https://testapi.openbanking.or.kr/oauth/2.0/token", body.toByteArray())
                 return true
@@ -79,17 +82,17 @@ class MyWebViewClient : WebViewClient(){
 
 //    fun onAuthCertificationSuccess(authResponse: AuthResponse) {
 //        Log.d("access_token_fragment", authResponse.access_token)
-
-//        val spf =  getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
+//
+//        val spf = getSharedPreferences("access_token", AppCompatActivity.MODE_PRIVATE)
 //        val editor = spf.edit()
-
+//
 //        editor.putString("access_token", authResponse.access_token)
 //        editor.apply()
 //        }
-
+//
 //    fun onAuthCertificationFailure() {
 //        Log.d("access_token_fragment", "fail")
-//    }
+    }
 
 
     private fun authCertification(code: String) {
@@ -119,19 +122,15 @@ class MyWebViewClient : WebViewClient(){
                     if (response.isSuccessful) {
                         val authResponse = response.body()!!
 
-                        authView.onAuthCertificationSuccess(authResponse)
+//                        authView.onAuthCertificationSuccess(authResponse)
                         Log.d("auth-certification", authResponse.access_token)
                     }
                 }
 
                 override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                    authView.onAuthCertificationFailure()
+//                    authView.onAuthCertificationFailure()
                     Log.d("auth-certif-error", t.toString())
                 }
             })
     }
 
-
-
-
-}

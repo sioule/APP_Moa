@@ -20,6 +20,48 @@ class AuthService {
         this.authView = authView
     }
 
+
+    fun authCertification(code: String) {
+        val interceptor = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        val client: OkHttpClient = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+
+        val gson: Gson = GsonBuilder().setLenient().create()
+
+        // baseUrl 안쓰는 부분이라 직접 빌드
+        val authService = Retrofit.Builder()
+            .baseUrl("https://testapi.openbanking.or.kr/oauth/2.0/")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson)).build()
+//            .addConverterFactory(ScalarsConverterFactory.create()).build()
+            .create(AuthRetrofitInterface::class.java)
+
+
+        authService.token(code, "6344979b-a78d-48c5-97b9-3b4051bdc315", "101c7763-e2aa-4ef4-b5b9-d83cf009f50b",
+            "http://localhost:8080/authResult", "authorization_code")
+            .enqueue(object : Callback<AuthResponse> {
+                override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
+                    if (response.isSuccessful) {
+                        val authResponse = response.body()!!
+
+                        authView.onAuthCertificationSuccess(authResponse)
+                        Log.d("auth-certification", authResponse.access_token)
+                    }
+                }
+
+                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+                    authView.onAuthCertificationFailure()
+                    Log.d("auth-certif-error", t.toString())
+                }
+            })
+    }
+
+
+
 //    fun authCertification(code: String) {
 //        val interceptor = HttpLoggingInterceptor().apply {
 //            level = HttpLoggingInterceptor.Level.BODY

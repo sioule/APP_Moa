@@ -5,9 +5,11 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.core.view.WindowCompat
 import com.mobile.moa.asset.AssetFragment
+import com.mobile.moa.asset.AssetListFragment
 import com.mobile.moa.databinding.ActivityMainBinding
 import com.mobile.moa.home.HomeFragment
 import com.mobile.moa.mileage.MileageShopFragment
@@ -97,5 +99,10 @@ class MainActivity : AppCompatActivity() {
         if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
             WindowCompat.setDecorFitsSystemWindows(window, false)
         }
+    }
+
+    fun changeAssetFragment() {
+        Log.d("change-fragment", "main")
+        supportFragmentManager.beginTransaction().replace(R.id.asset_frm, AssetListFragment()).commitAllowingStateLoss();
     }
 }
