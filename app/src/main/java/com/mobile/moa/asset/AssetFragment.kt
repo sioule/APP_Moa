@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -63,7 +64,7 @@ class AssetFragment : Fragment(), AuthView {
             }
             //웹뷰 클라이언트 설정
             myWebView.webViewClient = MyWebViewClient()
-            myWebView.loadUrl("https://twww.openbanking.or.kr/apt/mobileweb/authorizeNewGW?sessionID=wwff9937135-d287-46a3-8fdf-5bc5c0243ce2&action=Grant&api_tran_id=a197d782-23e2-4b3d-9fd1-f6c80f1664ac&gw_svc_id=faf66bd6cafdf009a37caaac77ba5194&gw_app_key=6344979b-a78d-48c5-97b9-3b4051bdc315&response_type=code&client_id=6344979b-a78d-48c5-97b9-3b4051bdc315&client_info=&redirect_uri=http://localhost:8080/authResult&scope=login+inquiry+transfer&auth_type=0&lang=kor&state=12345678123456781234567812345678")
+            myWebView.loadUrl("https://twww.openbanking.or.kr/apt/mobileweb/authorizeNewGW?sessionID=wff8937135-d287-46a3-8fdf-5bc5c0243ce2&action=Grant&api_tran_id=a197d782-23e2-4b3d-9fd1-f6c80f1664ac&gw_svc_id=faf66bd6cafdf009a37caaac77ba5194&gw_app_key=6344979b-a78d-48c5-97b9-3b4051bdc315&response_type=code&client_id=6344979b-a78d-48c5-97b9-3b4051bdc315&client_info=&redirect_uri=http://localhost:8080/authResult&scope=login+inquiry+transfer&auth_type=0&lang=kor&state=12345678123456781234567812345678")
 
         }
 
@@ -75,6 +76,8 @@ class AssetFragment : Fragment(), AuthView {
         Log.d("access_token_fragment", authResponse.user_seq_no)
         val spf =  activity?.getSharedPreferences("access_token", Context.MODE_PRIVATE)
         val editor = spf?.edit()
+
+        Toast.makeText(activity, "인증 토큰이 발급되었습니다.\n 유저번호 " + authResponse.user_seq_no, Toast.LENGTH_SHORT).show()
 
         editor?.putString("seq",authResponse.user_seq_no)
 //        editor?.apply()

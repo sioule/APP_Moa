@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         initBottomNavigation()
-        setStatusBarTransparent()
+//        setStatusBarTransparent()
     }
 
 //    private fun getJwt(): Long {
