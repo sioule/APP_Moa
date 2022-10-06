@@ -39,8 +39,6 @@ class MyFragment : Fragment(), MyView {
 
         myService.setMyView(this)
 
-        //사용자 정보 가져오기
-        myService.getMyPage(getMemberId(), getJwt()!!)
 
         //학교 등록하기 - 액티비티 연결
         binding.mySchoolCv.setOnClickListener{
@@ -90,7 +88,14 @@ class MyFragment : Fragment(), MyView {
 
     override fun onResume() {
         super.onResume()
-        notify()
+//        notify()
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        //사용자 정보 가져오기
+        myService.getMyPage(getMemberId(), getJwt()!!)
     }
 
     private fun getMemberId(): Long {
@@ -106,20 +111,20 @@ class MyFragment : Fragment(), MyView {
 
     override fun onGetMySuccess(myResponse: MyResponse) {
         binding.myNicknameTv.text = myResponse.nickname
-        if (myResponse.school.equals(null)) {
-            binding.mySchoolTv.visibility = View.VISIBLE
-            binding.mySchoolNameTv.visibility = View.INVISIBLE
-        }
-        else {
+        if (myResponse.school != null) {
+//            binding.mySchoolTv.visibility = View.VISIBLE
+//            binding.mySchoolNameTv.visibility = View.INVISIBLE
             binding.mySchoolTv.visibility = View.INVISIBLE
             binding.mySchoolNameTv.visibility = View.VISIBLE
             binding.mySchoolNameTv.text = myResponse.school
         }
+//        else {
+//            binding.mySchoolTv.visibility = View.INVISIBLE
+//            binding.mySchoolNameTv.visibility = View.VISIBLE
+//            binding.mySchoolNameTv.text = myResponse.school
+//        }
     }
 
-    override fun onPutSchoolSuccess(myResponse: MyResponse) {
-        Log.d("put-school-fragment", myResponse.nickname)
-    }
 
     override fun onUpdateMySuccess(myResponse: MyResponse) {
         binding.myNicknameTv.text = myResponse.nickname

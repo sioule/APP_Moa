@@ -72,7 +72,7 @@ class MapFragment : Fragment(), ShopView,
         map = googleMap
         googleMap.addMarker(
             MarkerOptions()
-                .position(LatLng(0.0, 0.0))
+                .position(LatLng(127.0, 37.0))
                 .title("Marker")
         )
         enableMyLocation()
@@ -200,6 +200,7 @@ class MapFragment : Fragment(), ShopView,
             Toast.makeText(activity, "로그인이 필요한 서비스입니다.", Toast.LENGTH_SHORT).show()
         }
         else {
+            Log.d("mapfrag", "getSHop")
             shopService.getShopList(getJwt()!!)
         }
     }

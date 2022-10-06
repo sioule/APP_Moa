@@ -45,4 +45,8 @@ class SchoolFragment : Fragment(), SchoolView {
         TODO("Not yet implemented")
     }
 
+    override fun onPutSchoolSuccess(myResponse: MyResponse) {
+        TODO("Not yet implemented")
+    }
+
 }

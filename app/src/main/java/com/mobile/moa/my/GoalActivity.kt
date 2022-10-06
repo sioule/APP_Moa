@@ -35,7 +35,7 @@ class GoalActivity : AppCompatActivity() {
     // 목표 관리 조회
     fun getGoal() {
         var date = "2022-10" // TODO date 수정
-        val call: Call<List<Goal>> = ServiceCreator.service.getGoal(date, memberId.toLong())
+        val call: Call<List<Goal>> = ServiceCreator.service.getGoal(memberId.toLong(), date)
         call.enqueue(object : Callback<List<Goal>> {
             override fun onResponse(call: Call<List<Goal>>, response: Response<List<Goal>>) {
                 if (response.isSuccessful) {
@@ -87,7 +87,7 @@ class GoalActivity : AppCompatActivity() {
     // 목표달성률
     fun getAchievementRate() {
         var date = "2022-10" // TODO date 수정
-        val call: Call<Int> = ServiceCreator.service.getAchievementRate(date, memberId.toLong())
+        val call: Call<Int> = ServiceCreator.service.getAchievementRate(memberId.toLong(), date)
         call.enqueue(object : Callback<Int> {
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {

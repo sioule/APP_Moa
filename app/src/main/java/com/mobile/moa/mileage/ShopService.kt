@@ -16,7 +16,8 @@ class ShopService {
     fun getShopList(jwt: String) {
         val shopService = getRetrofit().create(ShopRetrofitInterface::class.java)
 
-        shopService.getShopList(jwt).enqueue(object : retrofit2.Callback<List<ShopResponse>>{
+        Log.d("shop-service", "getShop")
+        shopService.getShopList().enqueue(object : retrofit2.Callback<List<ShopResponse>>{
             override fun onResponse(call: Call<List<ShopResponse>>, response: Response<List<ShopResponse>>) {
                 if (response.isSuccessful) {
                     val shopList = response.body()!!
@@ -36,7 +37,7 @@ class ShopService {
     fun getShopListMember(memberId: Long, jwt: String) {
         val shopService = getRetrofit().create(ShopRetrofitInterface::class.java)
 
-        shopService.getShopListMember(jwt, memberId).enqueue(object : retrofit2.Callback<List<ShopResponse>>{
+        shopService.getShopListMember(memberId).enqueue(object : retrofit2.Callback<List<ShopResponse>>{
             override fun onResponse(call: Call<List<ShopResponse>>, response: Response<List<ShopResponse>>) {
                 if (response.isSuccessful) {
                     val shopList = response.body()!!

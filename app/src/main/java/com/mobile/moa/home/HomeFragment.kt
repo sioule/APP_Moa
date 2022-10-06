@@ -41,6 +41,7 @@ class HomeFragment : Fragment(), ShopView {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        //로그인 페이지 연결 살리기
         if(getJwt().equals(null)) {
             val intent = Intent(context, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
@@ -70,7 +71,7 @@ class HomeFragment : Fragment(), ShopView {
 
     private fun getMemberId(): Long {
         val memberId = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return memberId!!.getLong("memberId", 0)
+        return memberId!!.getLong("memberId", 4)
     }
 
     private fun getJwt(): String? {

@@ -183,14 +183,15 @@ class MyService {
     }
 
     //서버에 학교 전달
-    fun putSchool(memberId: Long, school: RequestSchool) {
+    fun putSchool(jwt: String, memberId: Long, school: RequestSchool) {
         val putSchoolService = getRetrofit().create(MyRetrofitInterface::class.java)
 
-        putSchoolService.putSchool(memberId, school).enqueue(object : retrofit2.Callback<MyResponse>{
+        putSchoolService.putSchool(jwt, memberId, school).enqueue(object : retrofit2.Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse>, response: Response<MyResponse>) {
                 if (response.isSuccessful) {
                     val my = response.body()!!
-                    myView.onPutSchoolSuccess(my)
+
+                    schoolView.onPutSchoolSuccess(my)
                     Log.d("my-retrofit-school", my.id.toString())
                 }
             }

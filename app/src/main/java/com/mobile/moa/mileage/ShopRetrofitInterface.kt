@@ -12,12 +12,10 @@ date: 22.06.24*/
 interface ShopRetrofitInterface {
     @GET("/store")
     fun getShopList(
-        @Header("Authorization") jwt: String
     ): Call<List<ShopResponse>>
 
     @GET("/store/{memberId}")
     fun getShopListMember(
-        @Header("Authorization") jwt: String,
         @Path("memberId") memberId: Long
     ): Call<List<ShopResponse>>
 

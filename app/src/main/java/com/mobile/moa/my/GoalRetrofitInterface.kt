@@ -21,8 +21,8 @@ interface GoalRetrofitInterface {
     // 목표 관리 조회
     @GET("/goal/{memberId}")
     fun getGoal(
-        @Query("date") date: String,
         @Path("memberId") memberId: Long,
+        @Query("date") date: String
     ) : retrofit2.Call<List<Goal>>
 
     // 목표 달성 삭제
@@ -32,7 +32,7 @@ interface GoalRetrofitInterface {
     // 월별 달성률 조회
     @GET("/goal/rate/{memberId}")
     fun getAchievementRate(
-        @Query("date") date: String,
         @Path("memberId") memberId: Long,
+        @Query("date") date: String
     ) : retrofit2.Call<Int>
 }

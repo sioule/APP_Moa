@@ -35,8 +35,7 @@ class SchoolActivity : AppCompatActivity(), SchoolView {
 
         binding.schoolPutBtn.setOnClickListener {
             Log.d("put-school-btn", school.userSchool)
-            myService.putSchool(getJwt(), school)
-            finish()
+            myService.putSchool(getJwt()!!, getMemberId(), school)
         }
     }
 
@@ -71,8 +70,18 @@ class SchoolActivity : AppCompatActivity(), SchoolView {
             Log.d("school-fragment-success", "fail")
         }
 
-    private fun getJwt(): Long {
+    private fun getMemberId(): Long {
         val memberId = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return memberId!!.getLong("jwt", 0)
+        return memberId!!.getLong("memberId", 0)
+    }
+
+    private fun getJwt(): String? {
+        val jwt = this.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return jwt!!.getString("jwt", null)
+    }
+
+    override fun onPutSchoolSuccess(myResponse: MyResponse) {
+        Log.d("put-school-fragment", myResponse.nickname)
+        finish()
     }
 }

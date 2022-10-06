@@ -12,7 +12,8 @@ import javax.net.ssl.HttpsURLConnection
 /* written by keh
 date: 22.07.31 */
 
-const val BASE_URL = "http://3.35.148.26:8080" //추후 수정
+//const val BASE_URL = "http://3.35.148.26:8080" //추후 수정
+const val BASE_URL = "http://127.0.0.1:8080" //추후 수정
 
 fun getRetrofit(): Retrofit {
     val interceptor = HttpLoggingInterceptor().apply {

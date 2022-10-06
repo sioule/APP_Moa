@@ -44,6 +44,7 @@ interface MyRetrofitInterface {
 
     @PUT("/myPage/school/{id}")
     fun putSchool(
+        @Header("Authorization") jwt: String,
         @Path("id") id: Long,
         @Body requestSchool: RequestSchool
     ) : retrofit2.Call<MyResponse>

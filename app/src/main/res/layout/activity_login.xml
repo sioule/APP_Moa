@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onClick"
     tools:context=".my.LoginActivity">
 
     <TextView
@@ -12,22 +13,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="MoA"
+        android:textColor="#f8da00"
         android:textSize="33sp"
         android:textStyle="bold"
-        android:textColor="#f8da00"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <LinearLayout
         android:id="@+id/login_input_ll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="88dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_marginTop="88dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/home_logo">
 
         <androidx.cardview.widget.CardView
@@ -57,7 +59,7 @@
 
                 <EditText
                     android:id="@+id/login_id_et"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
@@ -95,7 +97,7 @@
 
                 <EditText
                     android:id="@+id/login_password_et"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
@@ -108,37 +110,38 @@
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/login_submit_btn"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="80dp"
-            android:layout_marginBottom="2dp"
-            android:background="@drawable/dialog_btn_background"
-            android:text="로그인"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_input_ll" />
-
-        <Button
-            android:id="@+id/join_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp"
-            android:text="회원 가입 하러 가기"
-            android:textSize="12sp"
-            android:textColor="#808080"
-            android:background="#00ff0000"
-            android:padding="10dp"/>
-
     </LinearLayout>
 
+    <Button
+        android:id="@+id/login_submit_btn"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/dialog_btn_background"
+        android:onClick="onClick"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_input_ll" />
+
+    <Button
+        android:id="@+id/join_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="#00ff0000"
+        android:padding="10dp"
+        android:text="회원 가입 하러 가기"
+        android:textColor="#808080"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_submit_btn" />
+
+    <!--    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
