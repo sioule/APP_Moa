@@ -40,6 +40,7 @@ class ShopListFragment : Fragment(), ShopView {
         }
         else {
             shopService.getShopListMember(getMemberId(), getJwt()!!)
+            shopService.getShopList(getJwt()!!)
         }
     }
 

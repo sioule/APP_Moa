@@ -50,6 +50,8 @@ class AssetFragment : Fragment(), AuthView {
         }
 //        changeAssetFragment()
 
+        //AssetFragment
+
         authService.setCertificationView(this)
 
         binding.certificationBtn.setOnClickListener{

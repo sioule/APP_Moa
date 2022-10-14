@@ -26,7 +26,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, LoginView {
         loginService.setLoginView(this)
 
         //추후 수정
-        saveAuth(5, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2NvQG5hdmVyLmNvbSIsImlhdCI6MTY2NTA1NjY5NSwiZXhwIjoxNjY5Mzc2Njk1fQ.qM2JlftK48UKN5XOZIZXT6ucC2crBu2zU-lrJ6PFdcU")
+        saveAuth(6, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2Nvc3NAbmF2ZXIuY29tIiwiaWF0IjoxNjY1MDg3MTE3LCJleHAiOjE2Njk0MDcxMTd9.le5IrD0Iqf8D42KS7yFUHLEtTpOQURn4u4a5j-4iOCc")
+//        saveAuth(5, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2NvQG5hdmVyLmNvbSIsImlhdCI6MTY2NTA1NjY5NSwiZXhwIjoxNjY5Mzc2Njk1fQ.qM2JlftK48UKN5XOZIZXT6ucC2crBu2zU-lrJ6PFdcU")
 //        saveAuth(4, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJra2tAbmF2ZXIuY29tIiwiaWF0IjoxNjY0OTkwNDI1LCJleHAiOjE2NjkzMTA0MjV9.-_a-zTxsfhXfRYgC1SsabEriVWN9F5cRbN6Hcc6_sSY")
 //        saveAuth(1, "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb21zb21AbmF2ZXIuY29tIiwiaWF0IjoxNjY0OTg3OTg1LCJleHAiOjE2NjkzMDc5ODV9.T7-UmfBu7xMHfr87pFCDABvhm6OZTa3wbD3byZuS_-U")
 

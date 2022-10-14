@@ -25,15 +25,8 @@ import java.util.*
 
 class MyWebViewClient : WebViewClient(){
 
-
-    private var authService = AuthService()
     private lateinit var authView: AuthView
     private var assetFragment = AssetFragment()
-
-    fun setCertificationView(authView: AuthView) {
-        this.authView = authView
-    }
-
 
     override fun onLoadResource(view: WebView?, url: String?) {
         super.onLoadResource(view, url)
@@ -44,12 +37,10 @@ class MyWebViewClient : WebViewClient(){
         super.onPageFinished(view, url)
     }
 
-
     override fun shouldInterceptRequest(
         view: WebView?,
         request: WebResourceRequest?
     ): WebResourceResponse? {
-//        Log.d("request-intercept", request?.url?.query.toString())
         return super.shouldInterceptRequest(view, request)
     }
 

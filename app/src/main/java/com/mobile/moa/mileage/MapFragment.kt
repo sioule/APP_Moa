@@ -51,10 +51,6 @@ class MapFragment : Fragment(), ShopView,
         binding = FragmentMapBinding.inflate(inflater, container, false)
         container?.context
 
-//        mapFg = binding.shopMap
-//        mapFg.onCreate(savedInstanceState)
-//        mapFg.getMapAsync(this)
-
         val mapFragment = childFragmentManager.findFragmentById(R.id.shop_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
@@ -72,13 +68,33 @@ class MapFragment : Fragment(), ShopView,
         map = googleMap
         googleMap.addMarker(
             MarkerOptions()
-                .position(LatLng(127.0, 37.0))
-                .title("Marker")
+                .position(LatLng(37.4747, 126.9931))
+                .title("산들해 반포점")
         )
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(37.4761, 126.9924))
+                .title("도마 DOMA")
+        )
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(37.4758, 126.992))
+                .title(" 수원영")
+        )
+        googleMap.addMarker(
+            MarkerOptions()
+                .position(LatLng(37.4754, 126.9915))
+                .title("예당떡")
+        )
+
         enableMyLocation()
         map.isMyLocationEnabled = true
         map.setOnMyLocationButtonClickListener(this)
         map.setOnMyLocationClickListener(this)
+
+//        googleMap.addMarker(
+//            markerOptions
+//        )
     }
 
     @SuppressLint("MissingPermission")
@@ -216,11 +232,16 @@ class MapFragment : Fragment(), ShopView,
     }
 
     override fun onShopListSuccess(shopList: List<ShopResponse>) {
+//        this@MapFragment.shopList = shopList
         for(shop in shopList) {
             val marker = LatLng(shop.lat.toDouble(), shop.lng.toDouble())
             val markerOptions = MarkerOptions()
             markerOptions.position(marker)
             markerOptions.title(shop.name)
+            Log.d("shoplist", "map")
+//            gog.addMarker(
+//                markerOptions
+//            )
         }
     }
 
